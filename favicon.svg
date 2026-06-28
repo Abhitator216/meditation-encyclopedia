@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#2a1a5e"/>
+      <stop offset="60%" stop-color="#13131a"/>
+      <stop offset="100%" stop-color="#0a0a0f"/>
+    </radialGradient>
+    <linearGradient id="aura" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5c842"/>
+      <stop offset="100%" stop-color="#6c63ff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="32" fill="url(#bg)"/>
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#6c63ff" stroke-opacity="0.35" stroke-width="1"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#f5c842" stroke-opacity="0.25" stroke-width="1"/>
+  <!-- Meditating figure -->
+  <g fill="url(#aura)">
+    <!-- Head -->
+    <circle cx="32" cy="22" r="5"/>
+    <!-- Halo -->
+    <circle cx="32" cy="22" r="7.5" fill="none" stroke="#f5c842" stroke-width="0.8" stroke-opacity="0.8"/>
+    <!-- Body / lotus posture -->
+    <path d="M32 29c-7 0-12 6-12 12 0 3 2 5 5 5h14c3 0 5-2 5-5 0-6-5-12-12-12z"/>
+    <!-- Arms resting on knees -->
+    <path d="M19 41c-3 0-5 2-5 4 0 1 1 2 2 2h6c-1-2-2-4-3-6z" opacity="0.85"/>
+    <path d="M45 41c3 0 5 2 5 4 0 1-1 2-2 2h-6c1-2 2-4 3-6z" opacity="0.85"/>
+  </g>
+  <!-- Chakra dot at third eye -->
+  <circle cx="32" cy="20.5" r="0.9" fill="#0a0a0f"/>
+</svg>

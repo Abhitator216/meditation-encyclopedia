@@ -1,0 +1,1733 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧘 The Complete Encyclopedia of World Meditation</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.svg">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card-bg: #13131a;
+    --card-border: #1e1e2e;
+    --text: #e8e8f0;
+    --muted: #888;
+    --gold: #f5c842;
+    --accent: #6c63ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: radial-gradient(ellipse at center, #1a1040 0%, #0a0a0f 70%);
+    border-bottom: 1px solid #2a2a3e;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236c63ff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .hero h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 800; color: var(--gold); text-shadow: 0 0 40px rgba(245,200,66,0.4); position: relative; line-height: 1.2; }
+  .hero p { margin-top: 12px; color: #aaa; font-size: 1.1rem; position: relative; }
+  .hero .stats { display: flex; justify-content: center; gap: 30px; margin-top: 24px; flex-wrap: wrap; position: relative; }
+  .stat { background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.3); border-radius: 12px; padding: 10px 20px; }
+  .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* CONTROLS */
+  .controls {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,15,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid #2a2a3e;
+    padding: 12px 20px;
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center;
+  }
+  .controls input {
+    flex: 1; min-width: 200px; max-width: 400px;
+    background: #1a1a25; border: 1px solid #2a2a3e; color: var(--text);
+    padding: 10px 16px; border-radius: 10px; font-size: 0.95rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .controls input:focus { border-color: var(--accent); }
+  .filter-btn {
+    background: #1a1a25; border: 1px solid #2a2a3e; color: var(--muted);
+    padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 0.82rem;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .progress-bar-wrap { width: 100%; background: #1a1a25; border-radius: 4px; height: 6px; overflow: hidden; }
+  .progress-bar { height: 100%; background: linear-gradient(90deg, var(--gold), var(--accent)); border-radius: 4px; transition: width 0.5s; }
+  .progress-text { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 4px; }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    padding: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+  .card.studied { border-color: var(--gold); }
+  .card.studied::after { content: '✓ STUDIED'; position: absolute; top: 10px; right: 10px; background: var(--gold); color: #000; font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.5px; }
+
+  .card-header {
+    padding: 18px 18px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .card-symbol {
+    font-size: 2.2rem; line-height: 1;
+    background: rgba(255,255,255,0.05); border-radius: 12px;
+    width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .card-title-group { flex: 1; }
+  .card-num { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+  .card-name { font-size: 1.05rem; font-weight: 700; line-height: 1.3; color: #fff; }
+  .card-era { font-size: 0.72rem; margin-top: 5px; display: inline-block; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+
+  .card-body { padding: 14px 18px; }
+  .meta-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .meta-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 3px 8px; font-size: 0.72rem; color: #ccc; }
+  .meta-chip span { color: var(--muted); margin-right: 3px; }
+
+  .section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); font-weight: 700; margin-bottom: 5px; margin-top: 10px; }
+  .section-text { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
+  .key-words { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .kw { background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.25); color: #a0a0ff; font-size: 0.7rem; padding: 3px 8px; border-radius: 20px; }
+
+  .card-footer {
+    padding: 10px 18px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .study-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    color: var(--muted); padding: 6px 14px; border-radius: 8px;
+    font-size: 0.78rem; cursor: pointer; transition: all 0.2s;
+  }
+  .study-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .studied .study-btn { background: rgba(245,200,66,0.12); border-color: var(--gold); color: var(--gold); }
+  .key-text-small { font-size: 0.7rem; color: var(--muted); font-style: italic; max-width: 60%; text-align: right; line-height: 1.3; }
+
+  .no-results { text-align: center; padding: 60px; color: var(--muted); font-size: 1.1rem; grid-column: 1 / -1; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #13131a; border: 1px solid #2a2a3e; border-radius: 20px;
+    max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto;
+    padding: 30px;
+  }
+  .modal-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .modal-symbol { font-size: 3rem; background: rgba(255,255,255,0.05); border-radius: 16px; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .modal-name { font-size: 1.4rem; font-weight: 800; color: #fff; }
+  .modal-close { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.08); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .modal-section { margin-bottom: 18px; }
+  .modal-section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  .modal-section-body { font-size: 0.92rem; color: #ccc; line-height: 1.7; }
+  .divider { height: 1px; background: rgba(255,255,255,0.06); margin: 16px 0; }
+
+  footer { text-align: center; padding: 30px; color: var(--muted); font-size: 0.8rem; border-top: 1px solid #1a1a25; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🧘 The Complete Encyclopedia<br>of World Meditation</h1>
+  <p>Every known meditation tradition — from 5,000 BCE to today</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">60</div><div class="stat-label">Traditions</div></div>
+    <div class="stat"><div class="stat-num">7,000+</div><div class="stat-label">Years of History</div></div>
+    <div class="stat"><div class="stat-num" id="studiedCount">0</div><div class="stat-label">Studied</div></div>
+  </div>
+</div>
+
+<div class="controls">
+  <input type="text" id="searchBox" placeholder="🔍 Search any meditation, teacher, tradition, keyword..." oninput="filterCards()">
+  <button class="filter-btn active" onclick="setFilter('all',this)">All (60)</button>
+  <button class="filter-btn" onclick="setFilter('Ancient',this)">Ancient</button>
+  <button class="filter-btn" onclick="setFilter('Classical',this)">Classical</button>
+  <button class="filter-btn" onclick="setFilter('Medieval',this)">Medieval</button>
+  <button class="filter-btn" onclick="setFilter('Early Modern',this)">Early Modern</button>
+  <button class="filter-btn" onclick="setFilter('Modern',this)">Modern</button>
+  <button class="filter-btn" onclick="setFilter('studied',this)">✓ Studied</button>
+  <div style="width:100%;max-width:600px;">
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+    <div class="progress-text" id="progressText">0 of 60 meditations studied (0%)</div>
+  </div>
+</div>
+
+<div class="grid" id="grid"><div class="card" data-id="1" data-era="Ancient (5000–1500 BCE)" data-name="Vedic / Samhita Meditation" data-origin="India (Indus Valley)" data-teacher="Vedic Rishis / Seers" data-keywords="Mantra · Dharana · Yajna · Rita · Cosmic Order" data-technique="Chanting sacred Vedic hymns and mantras during ritual fire ceremonies (Yajnas). Repetitive recitation of hymns combined with breath awareness to align with cosmic forces (Rita). Practitioners sat in stillness reciting mantras." onclick="openModal(1)">
+      <div class="card-header" style="border-left:4px solid #c0392b">
+        <div class="card-symbol">🔥</div>
+        <div class="card-title-group">
+          <div class="card-num">#1</div>
+          <div class="card-name">Vedic / Samhita Meditation</div>
+          <span class="card-era" style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;">Ancient (5000–1500 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India (Indus Valley)</div>
+          <div class="meta-chip"><span>📅</span>c. 5000 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Vedic Rishis / Seers</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Chanting sacred Vedic hymns and mantras during ritual fire ceremonies (Yajnas). Repetitive recitation of hymns combined with breath awareness to align with c...</div>
+        <div class="key-words"><span class="kw">Mantra</span><span class="kw">Dharana</span><span class="kw">Yajna</span><span class="kw">Rita</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(1,event)">Mark Studied</button>
+        <div class="key-text-small">The Vedas</div>
+      </div>
+    </div><div class="card" data-id="2" data-era="Ancient (900–400 BCE)" data-name="Upanishadic / Jnana Dhyana" data-origin="India" data-teacher="Yajnavalkya, Uddalaka Aruni" data-keywords="Atman · Brahman · Jnana · Moksha · Self-Inquiry" data-technique="Deep contemplation on 'Who am I?' Turning awareness inward to realize the identity of individual self (Atman) with universal consciousness (Brahman). Pure self-inquiry — no object, no mantra. Sitting in stillness until the 'I-thought' dissolves." onclick="openModal(2)">
+      <div class="card-header" style="border-left:4px solid #c0392b">
+        <div class="card-symbol">🪔</div>
+        <div class="card-title-group">
+          <div class="card-num">#2</div>
+          <div class="card-name">Upanishadic / Jnana Dhyana</div>
+          <span class="card-era" style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;">Ancient (900–400 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India</div>
+          <div class="meta-chip"><span>📅</span>c. 900–400 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Yajnavalkya</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Deep contemplation on 'Who am I?' Turning awareness inward to realize the identity of individual self (Atman) with universal consciousness (Brahman). Pure se...</div>
+        <div class="key-words"><span class="kw">Atman</span><span class="kw">Brahman</span><span class="kw">Jnana</span><span class="kw">Moksha</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(2,event)">Mark Studied</button>
+        <div class="key-text-small">Mandukya Upanishad, Chandogya Upanishad</div>
+      </div>
+    </div><div class="card" data-id="3" data-era="Ancient (800–200 BCE)" data-name="Samkhya-Yoga Meditation" data-origin="India" data-teacher="Kapila (legendary founder)" data-keywords="Purusha · Prakriti · Viveka · Witness · Discrimination" data-technique="Disciplined observation of thoughts and emotions without reacting. Discriminative wisdom (Viveka) to distinguish pure consciousness (Purusha) from matter (Prakriti). Witness the material mind and dis-identify from it completely." onclick="openModal(3)">
+      <div class="card-header" style="border-left:4px solid #c0392b">
+        <div class="card-symbol">⚖️</div>
+        <div class="card-title-group">
+          <div class="card-num">#3</div>
+          <div class="card-name">Samkhya-Yoga Meditation</div>
+          <span class="card-era" style="background:#c0392b22;color:#c0392b;border:1px solid #c0392b44;">Ancient (800–200 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India</div>
+          <div class="meta-chip"><span>📅</span>c. 800–200 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Kapila</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Disciplined observation of thoughts and emotions without reacting. Discriminative wisdom (Viveka) to distinguish pure consciousness (Purusha) from matter (Pr...</div>
+        <div class="key-words"><span class="kw">Purusha</span><span class="kw">Prakriti</span><span class="kw">Viveka</span><span class="kw">Witness</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(3,event)">Mark Studied</button>
+        <div class="key-text-small">Samkhya Karika by Ishvarakrishna</div>
+      </div>
+    </div><div class="card" data-id="4" data-era="Ancient (600–400 BCE)" data-name="Taoist Meditation / Zuowang" data-origin="China" data-teacher="Laozi, Zhuangzi" data-keywords="Tao · Wu Wei · Zuowang · Naturalness · Sitting-Forgetting" data-technique="Sit quietly. Let go of all thoughts, sensations, and the sense of self. Don't try — simply BE. Allow the mind to dissolve into the Tao. Sub-practices: Shouyi (guarding the One), Neiguan (inner visualization), Xin Zhai (fasting of the heart-mind)." onclick="openModal(4)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">☯️</div>
+        <div class="card-title-group">
+          <div class="card-num">#4</div>
+          <div class="card-name">Taoist Meditation / Zuowang</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Ancient (600–400 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>China</div>
+          <div class="meta-chip"><span>📅</span>c. 600–400 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Laozi</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Sit quietly. Let go of all thoughts, sensations, and the sense of self. Don't try — simply BE. Allow the mind to dissolve into the Tao. Sub-practices: Shouyi...</div>
+        <div class="key-words"><span class="kw">Tao</span><span class="kw">Wu Wei</span><span class="kw">Zuowang</span><span class="kw">Naturalness</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(4,event)">Mark Studied</button>
+        <div class="key-text-small">Tao Te Ching, Zhuangzi</div>
+      </div>
+    </div><div class="card" data-id="5" data-era="Ancient (500 BCE)" data-name="Early Buddhist / Theravāda" data-origin="India (Bodh Gaya)" data-teacher="Siddhartha Gautama — The Buddha" data-keywords="Samatha · Vipassana · Nibbana · Jhana · Kammatthana" data-technique="Two main branches: Samatha (calm abiding — stabilizing the mind on an object) and Vipassana (insight — seeing impermanence, suffering, non-self). 40 meditation subjects (Kammatthana) assigned by a teacher to match personality type." onclick="openModal(5)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">☸️</div>
+        <div class="card-title-group">
+          <div class="card-num">#5</div>
+          <div class="card-name">Early Buddhist / Theravāda</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Ancient (500 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India (Bodh Gaya)</div>
+          <div class="meta-chip"><span>📅</span>c. 500 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Siddhartha Gautama — The Buddha</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Two main branches: Samatha (calm abiding — stabilizing the mind on an object) and Vipassana (insight — seeing impermanence, suffering, non-self). 40 meditati...</div>
+        <div class="key-words"><span class="kw">Samatha</span><span class="kw">Vipassana</span><span class="kw">Nibbana</span><span class="kw">Jhana</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(5,event)">Mark Studied</button>
+        <div class="key-text-small">Pali Canon, Majjhima Nikaya, Visuddhimagga</div>
+      </div>
+    </div><div class="card" data-id="6" data-era="Ancient (500 BCE)" data-name="Jain Meditation / Samayika" data-origin="India" data-teacher="Mahavira (24th Tirthankara)" data-keywords="Ahimsa · Samayika · Shukla Dhyana · Equanimity · Non-violence" data-technique="Samayika: 48-minute daily practice of equanimity — withdrawing from all worldly activity and sitting in absolute stillness. Four types: Arta (sorrowful — avoid), Raudra (wrathful — avoid), Dharma (virtuous — cultivate), Shukla (pure/luminous — highest)." onclick="openModal(6)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🕊️</div>
+        <div class="card-title-group">
+          <div class="card-num">#6</div>
+          <div class="card-name">Jain Meditation / Samayika</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Ancient (500 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India</div>
+          <div class="meta-chip"><span>📅</span>c. 500 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Mahavira</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Samayika: 48-minute daily practice of equanimity — withdrawing from all worldly activity and sitting in absolute stillness. Four types: Arta (sorrowful — avo...</div>
+        <div class="key-words"><span class="kw">Ahimsa</span><span class="kw">Samayika</span><span class="kw">Shukla Dhyana</span><span class="kw">Equanimity</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(6,event)">Mark Studied</button>
+        <div class="key-text-small">Tattvartha Sutra, Acaranga Sutra</div>
+      </div>
+    </div><div class="card" data-id="7" data-era="Classical (500 BCE)" data-name="Anapanasati — Mindfulness of Breathing" data-origin="Early Buddhism, India" data-teacher="The Buddha (detailed in MN 118)" data-keywords="Breath · 16 Steps · 4 Tetrads · Impermanence · Mindfulness" data-technique="16 steps in 4 tetrads: Know long/short breath, whole body, calm body; experience joy, happiness, mental formations; gladden, concentrate, liberate the mind; contemplate impermanence, fading, cessation, relinquishment. Focus on breath at nostrils or abdomen." onclick="openModal(7)">
+      <div class="card-header" style="border-left:4px solid #27ae60">
+        <div class="card-symbol">🌬️</div>
+        <div class="card-title-group">
+          <div class="card-num">#7</div>
+          <div class="card-name">Anapanasati — Mindfulness of Breathing</div>
+          <span class="card-era" style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;">Classical (500 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Early Buddhism, India</div>
+          <div class="meta-chip"><span>📅</span>c. 500 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>The Buddha</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">16 steps in 4 tetrads: Know long/short breath, whole body, calm body; experience joy, happiness, mental formations; gladden, concentrate, liberate the mind; ...</div>
+        <div class="key-words"><span class="kw">Breath</span><span class="kw">16 Steps</span><span class="kw">4 Tetrads</span><span class="kw">Impermanence</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(7,event)">Mark Studied</button>
+        <div class="key-text-small">Anapanasati Sutta</div>
+      </div>
+    </div><div class="card" data-id="8" data-era="Classical (500 BCE+)" data-name="Vipassana Meditation" data-origin="India / Myanmar" data-teacher="The Buddha · Mahasi Sayadaw · S.N. Goenka" data-keywords="Anicca · Dukkha · Anatta · Body Scan · Noting" data-technique="Body scanning head-to-feet (Goenka) or noting 'rising-falling' of abdomen (Mahasi). Observe every sensation without reacting. Directly perceive the three characteristics of all existence: Anicca (impermanence), Dukkha (suffering), Anatta (non-self)." onclick="openModal(8)">
+      <div class="card-header" style="border-left:4px solid #27ae60">
+        <div class="card-symbol">👁️</div>
+        <div class="card-title-group">
+          <div class="card-num">#8</div>
+          <div class="card-name">Vipassana Meditation</div>
+          <span class="card-era" style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;">Classical (500 BCE+)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Myanmar</div>
+          <div class="meta-chip"><span>📅</span>c. 500 BCE, refined 19th–20th c.</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>The Buddha · Mahasi Sayadaw · S.N. Goenka</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Body scanning head-to-feet (Goenka) or noting 'rising-falling' of abdomen (Mahasi). Observe every sensation without reacting. Directly perceive the three cha...</div>
+        <div class="key-words"><span class="kw">Anicca</span><span class="kw">Dukkha</span><span class="kw">Anatta</span><span class="kw">Body Scan</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(8,event)">Mark Studied</button>
+        <div class="key-text-small">Mahasi Sayadaw texts, Goenka discourses</div>
+      </div>
+    </div><div class="card" data-id="9" data-era="Classical (500 BCE)" data-name="Loving-Kindness / Metta Bhavana" data-origin="Theravāda Buddhism, India" data-teacher="The Buddha" data-keywords="Metta · Karuna · Mudita · Upekkha · Brahmaviharas" data-technique="Repeat: 'May I be happy. May I be healthy. May I be safe. May I live with ease.' Expand progressively: self → loved ones → neutral people → difficult people → all beings without exception. The 4 Brahmaviharas: Metta, Karuna, Mudita, Upekkha." onclick="openModal(9)">
+      <div class="card-header" style="border-left:4px solid #27ae60">
+        <div class="card-symbol">💛</div>
+        <div class="card-title-group">
+          <div class="card-num">#9</div>
+          <div class="card-name">Loving-Kindness / Metta Bhavana</div>
+          <span class="card-era" style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;">Classical (500 BCE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Theravāda Buddhism, India</div>
+          <div class="meta-chip"><span>📅</span>c. 500 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>The Buddha</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Repeat: 'May I be happy. May I be healthy. May I be safe. May I live with ease.' Expand progressively: self → loved ones → neutral people → difficult people ...</div>
+        <div class="key-words"><span class="kw">Metta</span><span class="kw">Karuna</span><span class="kw">Mudita</span><span class="kw">Upekkha</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(9,event)">Mark Studied</button>
+        <div class="key-text-small">Metta Sutta, Karaniya Metta Sutta, Visuddhimagga</div>
+      </div>
+    </div><div class="card" data-id="10" data-era="Classical (400 BCE–400 CE)" data-name="Patanjali's Ashtanga / Raja Yoga" data-origin="India" data-teacher="Patanjali" data-keywords="Ashtanga · Dharana · Dhyana · Samadhi · Samyama · Kaivalya" data-technique="Eight limbs: Yama (ethics), Niyama (observances), Asana (posture), Pranayama (breath), Pratyahara (sense withdrawal), Dharana (concentration), Dhyana (sustained meditation), Samadhi (absorption). The final three together (Samyama) are the core meditative practice." onclick="openModal(10)">
+      <div class="card-header" style="border-left:4px solid #27ae60">
+        <div class="card-symbol">🧘</div>
+        <div class="card-title-group">
+          <div class="card-num">#10</div>
+          <div class="card-name">Patanjali's Ashtanga / Raja Yoga</div>
+          <span class="card-era" style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;">Classical (400 BCE–400 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India</div>
+          <div class="meta-chip"><span>📅</span>c. 400 BCE–400 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Patanjali</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Eight limbs: Yama (ethics), Niyama (observances), Asana (posture), Pranayama (breath), Pratyahara (sense withdrawal), Dharana (concentration), Dhyana (sustai...</div>
+        <div class="key-words"><span class="kw">Ashtanga</span><span class="kw">Dharana</span><span class="kw">Dhyana</span><span class="kw">Samadhi</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(10,event)">Mark Studied</button>
+        <div class="key-text-small">Yoga Sutras of Patanjali</div>
+      </div>
+    </div><div class="card" data-id="11" data-era="Classical (100 BCE–500 CE)" data-name="Mahayana Buddhist Meditation" data-origin="India, Central Asia" data-teacher="Nagarjuna, Asanga, Vasubandhu" data-keywords="Bodhicitta · Shunyata · Emptiness · Buddha-nature · Compassion" data-technique="Bodhicitta meditation — awakening the mind of enlightenment for all beings. Shunyata contemplation — meditating on emptiness (lack of inherent self in all phenomena). Buddha-nature meditation — resting in the inherent luminous quality of mind." onclick="openModal(11)">
+      <div class="card-header" style="border-left:4px solid #27ae60">
+        <div class="card-symbol">🌸</div>
+        <div class="card-title-group">
+          <div class="card-num">#11</div>
+          <div class="card-name">Mahayana Buddhist Meditation</div>
+          <span class="card-era" style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;">Classical (100 BCE–500 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India, Central Asia</div>
+          <div class="meta-chip"><span>📅</span>c. 100 BCE–500 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Nagarjuna</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Bodhicitta meditation — awakening the mind of enlightenment for all beings. Shunyata contemplation — meditating on emptiness (lack of inherent self in all ph...</div>
+        <div class="key-words"><span class="kw">Bodhicitta</span><span class="kw">Shunyata</span><span class="kw">Emptiness</span><span class="kw">Buddha-nature</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(11,event)">Mark Studied</button>
+        <div class="key-text-small">Heart Sutra, Diamond Sutra, Prajnaparamita Sutras</div>
+      </div>
+    </div><div class="card" data-id="12" data-era="Classical (300–400 CE)" data-name="Desert Fathers' Hesychasm" data-origin="Egyptian Desert, Christian tradition" data-teacher="Abba Anthony, Abba Poemen, Amma Syncletica" data-keywords="Hesychia · Stillness · Logismoi · Heart · Apatheia" data-technique="Stillness (Hesychia) — sitting in silence, guarding the heart, letting go of thoughts (logismoi) without engaging them. Watch thoughts arise and pass like clouds. Return to stillness. The heart is the center of prayer." onclick="openModal(12)">
+      <div class="card-header" style="border-left:4px solid #2980b9">
+        <div class="card-symbol">✝️</div>
+        <div class="card-title-group">
+          <div class="card-num">#12</div>
+          <div class="card-name">Desert Fathers' Hesychasm</div>
+          <span class="card-era" style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;">Classical (300–400 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Egyptian Desert, Christian tradition</div>
+          <div class="meta-chip"><span>📅</span>c. 300–400 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Abba Anthony</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Stillness (Hesychia) — sitting in silence, guarding the heart, letting go of thoughts (logismoi) without engaging them. Watch thoughts arise and pass like cl...</div>
+        <div class="key-words"><span class="kw">Hesychia</span><span class="kw">Stillness</span><span class="kw">Logismoi</span><span class="kw">Heart</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(12,event)">Mark Studied</button>
+        <div class="key-text-small">Sayings of the Desert Fathers</div>
+      </div>
+    </div><div class="card" data-id="13" data-era="Medieval (500 CE+)" data-name="Jesus Prayer / Prayer of the Heart" data-origin="Christian Orthodox tradition" data-teacher="St. Gregory Palamas, Mt. Athos monks" data-keywords="Hesychasm · Heart Prayer · Theosis · Breath · Lord Jesus Christ" data-technique="Continuous repetition of: 'Lord Jesus Christ, Son of God, have mercy on me, a sinner.' Synchronized with the breath — prayer on inhale AND exhale. Gradually internalized until it continues spontaneously — even during sleep. Head bowed toward heart." onclick="openModal(13)">
+      <div class="card-header" style="border-left:4px solid #2980b9">
+        <div class="card-symbol">📿</div>
+        <div class="card-title-group">
+          <div class="card-num">#13</div>
+          <div class="card-name">Jesus Prayer / Prayer of the Heart</div>
+          <span class="card-era" style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;">Medieval (500 CE+)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Christian Orthodox tradition</div>
+          <div class="meta-chip"><span>📅</span>c. 500 CE (formalized by 13th century)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>St. Gregory Palamas</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Continuous repetition of: 'Lord Jesus Christ, Son of God, have mercy on me, a sinner.' Synchronized with the breath — prayer on inhale AND exhale. Gradually ...</div>
+        <div class="key-words"><span class="kw">Hesychasm</span><span class="kw">Heart Prayer</span><span class="kw">Theosis</span><span class="kw">Breath</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(13,event)">Mark Studied</button>
+        <div class="key-text-small">The Philokalia, The Way of a Pilgrim</div>
+      </div>
+    </div><div class="card" data-id="14" data-era="Medieval (500 CE)" data-name="Lectio Divina" data-origin="Christian monastic tradition (St. Benedict)" data-teacher="St. Benedict of Nursia, Guigo II" data-keywords="Lectio · Meditatio · Oratio · Contemplatio · Scripture · Silence" data-technique="Four stages: Lectio (read Scripture slowly), Meditatio (reflect and ruminate on the text — repeat it mentally), Oratio (respond in personal prayer from the heart), Contemplatio (rest in God's presence beyond words and concepts — pure being)." onclick="openModal(14)">
+      <div class="card-header" style="border-left:4px solid #2980b9">
+        <div class="card-symbol">📖</div>
+        <div class="card-title-group">
+          <div class="card-num">#14</div>
+          <div class="card-name">Lectio Divina</div>
+          <span class="card-era" style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;">Medieval (500 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Christian monastic tradition (St. Benedict)</div>
+          <div class="meta-chip"><span>📅</span>c. 500 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>St. Benedict of Nursia</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Four stages: Lectio (read Scripture slowly), Meditatio (reflect and ruminate on the text — repeat it mentally), Oratio (respond in personal prayer from the h...</div>
+        <div class="key-words"><span class="kw">Lectio</span><span class="kw">Meditatio</span><span class="kw">Oratio</span><span class="kw">Contemplatio</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(14,event)">Mark Studied</button>
+        <div class="key-text-small">Rule of Saint Benedict, Ladder of Monks</div>
+      </div>
+    </div><div class="card" data-id="15" data-era="Medieval (700–1000 CE)" data-name="Chan / Zen Meditation" data-origin="China (later Japan, Korea, Vietnam)" data-teacher="Bodhidharma, Huineng, Dogen, Rinzai Gigen" data-keywords="Zazen · Koan · Shikantaza · Satori · Kensho · Just Sitting" data-technique="Zazen — sitting upright, alert, not grasping or rejecting anything that arises. Koan practice — contemplating paradoxical questions that shatter conceptual mind (e.g., 'What is the sound of one hand clapping? What was your face before your parents were born?'). Shikantaza — just sitting." onclick="openModal(15)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🌀</div>
+        <div class="card-title-group">
+          <div class="card-num">#15</div>
+          <div class="card-name">Chan / Zen Meditation</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Medieval (700–1000 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>China (later Japan, Korea, Vietnam)</div>
+          <div class="meta-chip"><span>📅</span>c. 500–1000 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Bodhidharma</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Zazen — sitting upright, alert, not grasping or rejecting anything that arises. Koan practice — contemplating paradoxical questions that shatter conceptual m...</div>
+        <div class="key-words"><span class="kw">Zazen</span><span class="kw">Koan</span><span class="kw">Shikantaza</span><span class="kw">Satori</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(15,event)">Mark Studied</button>
+        <div class="key-text-small">Platform Sutra, Blue Cliff Record, Gateless Gate</div>
+      </div>
+    </div><div class="card" data-id="16" data-era="Medieval (700–1000 CE)" data-name="Tibetan Buddhist / Vajrayana" data-origin="Tibet (from Indian Tantra)" data-teacher="Guru Rinpoche (Padmasambhava), Marpa, Milarepa" data-keywords="Ngondro · Deity Yoga · Dzogchen · Rigpa · Tummo · Mahamudra" data-technique="Ngondro (100,000 prostrations, mantras, mandala offerings). Deity Yoga — vivid visualization of oneself as a divine being. Mantra recitation. Dzogchen — direct recognition of Rigpa (pure awareness). Mahamudra — recognizing luminous empty nature of mind. Six Yogas of Naropa (Tummo, Dream Yoga, etc.)" onclick="openModal(16)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">💎</div>
+        <div class="card-title-group">
+          <div class="card-num">#16</div>
+          <div class="card-name">Tibetan Buddhist / Vajrayana</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Medieval (700–1000 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Tibet (from Indian Tantra)</div>
+          <div class="meta-chip"><span>📅</span>c. 700–1000 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Guru Rinpoche</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Ngondro (100,000 prostrations, mantras, mandala offerings). Deity Yoga — vivid visualization of oneself as a divine being. Mantra recitation. Dzogchen — dire...</div>
+        <div class="key-words"><span class="kw">Ngondro</span><span class="kw">Deity Yoga</span><span class="kw">Dzogchen</span><span class="kw">Rigpa</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(16,event)">Mark Studied</button>
+        <div class="key-text-small">Tibetan Book of the Dead, Guhyasamaja Tantra</div>
+      </div>
+    </div><div class="card" data-id="17" data-era="Medieval (700–1000 CE)" data-name="Sufi Meditation / Muraqaba &amp; Dhikr" data-origin="Islamic mysticism — Middle East, Persia" data-teacher="Rumi, Al-Hallaj, Al-Ghazali, Ibn Arabi" data-keywords="Muraqaba · Dhikr · Fana · Sama · Whirling · Divine Love" data-technique="Muraqaba: sit in stillness, focus on the heart, maintain awareness of God's presence. Dhikr: repetitive chanting of divine names ('Allahu Akbar', 'La ilaha illa Allah'). Sama: whirling (Mevlevi Dervishes) — spinning in meditative ecstasy to sacred music." onclick="openModal(17)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🌙</div>
+        <div class="card-title-group">
+          <div class="card-num">#17</div>
+          <div class="card-name">Sufi Meditation / Muraqaba &amp; Dhikr</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Medieval (700–1000 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Islamic mysticism — Middle East, Persia</div>
+          <div class="meta-chip"><span>📅</span>c. 700–1200 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Rumi</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Muraqaba: sit in stillness, focus on the heart, maintain awareness of God's presence. Dhikr: repetitive chanting of divine names ('Allahu Akbar', 'La ilaha i...</div>
+        <div class="key-words"><span class="kw">Muraqaba</span><span class="kw">Dhikr</span><span class="kw">Fana</span><span class="kw">Sama</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(17,event)">Mark Studied</button>
+        <div class="key-text-small">Masnavi</div>
+      </div>
+    </div><div class="card" data-id="18" data-era="Medieval (800–1200 CE)" data-name="Kashmiri Shaivism / Trika Meditation" data-origin="Kashmir, India" data-teacher="Abhinavagupta, Utpaladeva, Kshemaraja" data-keywords="Pratyabhijna · Spanda · Shiva · Shaktipat · Trika · Recognition" data-technique="Pratyabhijna ('Recognition') — recognizing one's true nature as Shiva/pure consciousness directly. Spanda meditation — meditating on the vibration/pulse of awareness beneath all experience. No gradual path — direct recognition through Shaktipat (transmission from teacher)." onclick="openModal(18)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🔺</div>
+        <div class="card-title-group">
+          <div class="card-num">#18</div>
+          <div class="card-name">Kashmiri Shaivism / Trika Meditation</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Medieval (800–1200 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Kashmir, India</div>
+          <div class="meta-chip"><span>📅</span>c. 800–1200 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Abhinavagupta</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Pratyabhijna ('Recognition') — recognizing one's true nature as Shiva/pure consciousness directly. Spanda meditation — meditating on the vibration/pulse of a...</div>
+        <div class="key-words"><span class="kw">Pratyabhijna</span><span class="kw">Spanda</span><span class="kw">Shiva</span><span class="kw">Shaktipat</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(18,event)">Mark Studied</button>
+        <div class="key-text-small">Shiva Sutras, Spanda Karikas, Pratyabhijna Hridayam, Tantraloka</div>
+      </div>
+    </div><div class="card" data-id="19" data-era="Medieval (1200 CE)" data-name="Jewish / Kabbalistic Meditation" data-origin="Jewish mystical tradition, Middle East/Europe" data-teacher="Rabbi Nachman of Breslov, Baal Shem Tov, Maimonides" data-keywords="Hitbonenut · Hitbodedut · Kabbalah · Sefirot · Devekut · Ein Sof" data-technique="Hitbonenut: deep contemplation of Kabbalistic concepts. Hitbodedut: speak to God in your own language, from your heart, daily (Breslov method). Merkabah: visualization of divine chariot/palaces. Gematria: meditation on Hebrew letters and their mystical meanings." onclick="openModal(19)">
+      <div class="card-header" style="border-left:4px solid #2980b9">
+        <div class="card-symbol">✡️</div>
+        <div class="card-title-group">
+          <div class="card-num">#19</div>
+          <div class="card-name">Jewish / Kabbalistic Meditation</div>
+          <span class="card-era" style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;">Medieval (1200 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Jewish mystical tradition, Middle East/Europe</div>
+          <div class="meta-chip"><span>📅</span>c. 1200 CE (older roots)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Rabbi Nachman of Breslov</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Hitbonenut: deep contemplation of Kabbalistic concepts. Hitbodedut: speak to God in your own language, from your heart, daily (Breslov method). Merkabah: vis...</div>
+        <div class="key-words"><span class="kw">Hitbonenut</span><span class="kw">Hitbodedut</span><span class="kw">Kabbalah</span><span class="kw">Sefirot</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(19,event)">Mark Studied</button>
+        <div class="key-text-small">Zohar, Sefer Yetzirah, Tanya</div>
+      </div>
+    </div><div class="card" data-id="20" data-era="Medieval (500–1200 CE)" data-name="Bhakti Yoga / Devotional Meditation" data-origin="India" data-teacher="Mirabai, Tukaram, Ramanuja, Chaitanya" data-keywords="Bhakti · Nama Japa · Kirtan · Surrender · Prema · Divine Love" data-technique="Nama Japa — chanting the divine name (Ram, Krishna, Om Namah Shivaya) with full love and feeling. Kirtan — communal devotional singing. Puja with Dhyana — ritual worship combined with visualizing the deity in the heart lotus. Complete surrender of self to God." onclick="openModal(20)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🌺</div>
+        <div class="card-title-group">
+          <div class="card-num">#20</div>
+          <div class="card-name">Bhakti Yoga / Devotional Meditation</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Medieval (500–1200 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India</div>
+          <div class="meta-chip"><span>📅</span>c. 500–1200 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Mirabai</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Nama Japa — chanting the divine name (Ram, Krishna, Om Namah Shivaya) with full love and feeling. Kirtan — communal devotional singing. Puja with Dhyana — ri...</div>
+        <div class="key-words"><span class="kw">Bhakti</span><span class="kw">Nama Japa</span><span class="kw">Kirtan</span><span class="kw">Surrender</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(20,event)">Mark Studied</button>
+        <div class="key-text-small">Narada Bhakti Sutras, Bhagavata Purana</div>
+      </div>
+    </div><div class="card" data-id="21" data-era="Early Modern (1500 CE)" data-name="Sikh Meditation / Nam Simran" data-origin="Punjab, India" data-teacher="Guru Nanak Dev Ji, ten Sikh Gurus" data-keywords="Waheguru · Nam Simran · Mool Mantar · Kirtan · Mukti · Gurbani" data-technique="Nam Simran: constant meditative remembrance of God's name (Waheguru). Silent repetition of 'Waheguru' or the Mool Mantar. Nitnem: daily recitation of set prayers at dawn, evening, and night. Kirtan: devotional singing of Gurbani (scripture) in an absorbed, meditative state." onclick="openModal(21)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">🌊</div>
+        <div class="card-title-group">
+          <div class="card-num">#21</div>
+          <div class="card-name">Sikh Meditation / Nam Simran</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Early Modern (1500 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Punjab, India</div>
+          <div class="meta-chip"><span>📅</span>c. 1500 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Guru Nanak Dev Ji</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Nam Simran: constant meditative remembrance of God's name (Waheguru). Silent repetition of 'Waheguru' or the Mool Mantar. Nitnem: daily recitation of set pra...</div>
+        <div class="key-words"><span class="kw">Waheguru</span><span class="kw">Nam Simran</span><span class="kw">Mool Mantar</span><span class="kw">Kirtan</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(21,event)">Mark Studied</button>
+        <div class="key-text-small">Guru Granth Sahib</div>
+      </div>
+    </div><div class="card" data-id="22" data-era="Early Modern (1375 CE)" data-name="Cloud of Unknowing / Apophatic" data-origin="English Christian mysticism" data-teacher="Anonymous English mystic" data-keywords="Unknowing · Apophatic · Naked Intent · Love · Cloud · Contemplation" data-technique="Surrender all concepts of God — even beautiful ones — and rest in pure unknowing love. Place a 'cloud of forgetting' below (blocking memories/thoughts) and a 'cloud of unknowing' above (between you and God). One word of love pierces the cloud. Naked intent toward God." onclick="openModal(22)">
+      <div class="card-header" style="border-left:4px solid #2980b9">
+        <div class="card-symbol">☁️</div>
+        <div class="card-title-group">
+          <div class="card-num">#22</div>
+          <div class="card-name">Cloud of Unknowing / Apophatic</div>
+          <span class="card-era" style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;">Early Modern (1375 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>English Christian mysticism</div>
+          <div class="meta-chip"><span>📅</span>c. 1375 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Anonymous English mystic</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Surrender all concepts of God — even beautiful ones — and rest in pure unknowing love. Place a 'cloud of forgetting' below (blocking memories/thoughts) and a...</div>
+        <div class="key-words"><span class="kw">Unknowing</span><span class="kw">Apophatic</span><span class="kw">Naked Intent</span><span class="kw">Love</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(22,event)">Mark Studied</button>
+        <div class="key-text-small">The Cloud of Unknowing</div>
+      </div>
+    </div><div class="card" data-id="23" data-era="Early Modern (c. 1500)" data-name="Ignatian Contemplation" data-origin="Spain / Catholic tradition" data-teacher="St. Ignatius of Loyola" data-keywords="Imagination · Contemplation · Senses · Gospel · Consolation · Discernment" data-technique="Imaginative prayer — vividly enter Gospel scenes using all five senses. Place yourself in the scene. See the colors, smell the air, hear the voices, feel the ground. Engage emotionally with Christ. Ask: what does this stir in me? Where is God moving? Consolation vs. Desolation discernment." onclick="openModal(23)">
+      <div class="card-header" style="border-left:4px solid #2980b9">
+        <div class="card-symbol">🎭</div>
+        <div class="card-title-group">
+          <div class="card-num">#23</div>
+          <div class="card-name">Ignatian Contemplation</div>
+          <span class="card-era" style="background:#2980b922;color:#2980b9;border:1px solid #2980b944;">Early Modern (c. 1500)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Spain / Catholic tradition</div>
+          <div class="meta-chip"><span>📅</span>c. 1521–1548 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>St. Ignatius of Loyola</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Imaginative prayer — vividly enter Gospel scenes using all five senses. Place yourself in the scene. See the colors, smell the air, hear the voices, feel the...</div>
+        <div class="key-words"><span class="kw">Imagination</span><span class="kw">Contemplation</span><span class="kw">Senses</span><span class="kw">Gospel</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(23,event)">Mark Studied</button>
+        <div class="key-text-small">Spiritual Exercises of St. Ignatius</div>
+      </div>
+    </div><div class="card" data-id="24" data-era="Early Modern (1700s)" data-name="Rinzai Zen Koan System" data-origin="Japan" data-teacher="Hakuin Ekaku (1686–1769)" data-keywords="Mu · Koan · Kensho · Dokusan · Hakuin · Breakthrough" data-technique="Work through hundreds of koans in a systematic curriculum with a Zen master (Roshi). Classic first koan: 'Mu' — sit with it not thinking ABOUT it but BECOMING it, until conceptual mind exhausts itself and direct insight (Kensho) breaks through. Private interviews (Dokusan) with master." onclick="openModal(24)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🎯</div>
+        <div class="card-title-group">
+          <div class="card-num">#24</div>
+          <div class="card-name">Rinzai Zen Koan System</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Early Modern (1700s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Japan</div>
+          <div class="meta-chip"><span>📅</span>c. 1700s (formalized by Hakuin)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Hakuin Ekaku</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Work through hundreds of koans in a systematic curriculum with a Zen master (Roshi). Classic first koan: 'Mu' — sit with it not thinking ABOUT it but BECOMIN...</div>
+        <div class="key-words"><span class="kw">Mu</span><span class="kw">Koan</span><span class="kw">Kensho</span><span class="kw">Dokusan</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(24,event)">Mark Studied</button>
+        <div class="key-text-small">Gateless Gate</div>
+      </div>
+    </div><div class="card" data-id="25" data-era="Early Modern (1800s)" data-name="Burmese Vipassana Revival" data-origin="Myanmar (Burma)" data-teacher="Ledi Sayadaw (1846–1923), Mahasi Sayadaw, S.N. Goenka" data-keywords="Noting · Rising-Falling · Body Scan · Lay Practice · 10-Day Retreat" data-technique="Ledi Sayadaw democratized Vipassana for laypeople (not just monks). Noting method (Mahasi): mentally note each experience — 'rising, falling, sitting, touching, thinking, hearing' — to cultivate precise awareness. Goenka's 10-day silent retreat format: scan body systematically for sensations." onclick="openModal(25)">
+      <div class="card-header" style="border-left:4px solid #27ae60">
+        <div class="card-symbol">📿</div>
+        <div class="card-title-group">
+          <div class="card-num">#25</div>
+          <div class="card-name">Burmese Vipassana Revival</div>
+          <span class="card-era" style="background:#27ae6022;color:#27ae60;border:1px solid #27ae6044;">Early Modern (1800s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Myanmar (Burma)</div>
+          <div class="meta-chip"><span>📅</span>c. 1800s–1900s</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Ledi Sayadaw</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Ledi Sayadaw democratized Vipassana for laypeople (not just monks). Noting method (Mahasi): mentally note each experience — 'rising, falling, sitting, touchi...</div>
+        <div class="key-words"><span class="kw">Noting</span><span class="kw">Rising-Falling</span><span class="kw">Body Scan</span><span class="kw">Lay Practice</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(25,event)">Mark Studied</button>
+        <div class="key-text-small">Mahasi Sayadaw: Practical Insight Meditation</div>
+      </div>
+    </div><div class="card" data-id="26" data-era="Early Modern (1900 CE)" data-name="Ramana Maharshi's Self-Inquiry / Atma Vichara" data-origin="India (Tiruvannamalai, Tamil Nadu)" data-teacher="Ramana Maharshi (1879–1950)" data-keywords="Who Am I · Self-Inquiry · I-Thought · Atman · Awareness · Self-Abidance" data-technique="Continuously ask 'Who am I?' — not philosophically but as direct investigation into the sense of 'I'. Notice the sense of 'I am' — the feeling of being, of existing. Turn attention toward its source: 'Where does this I arise from?' When thoughts arise: 'To whom does this arise? To me. Who am I?' Stay with this. The I-thought dissolves into pure awareness." onclick="openModal(26)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">❓</div>
+        <div class="card-title-group">
+          <div class="card-num">#26</div>
+          <div class="card-name">Ramana Maharshi's Self-Inquiry / Atma Vichara</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Early Modern (1900 CE)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India (Tiruvannamalai, Tamil Nadu)</div>
+          <div class="meta-chip"><span>📅</span>c. 1900–1950</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Ramana Maharshi</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Continuously ask 'Who am I?' — not philosophically but as direct investigation into the sense of 'I'. Notice the sense of 'I am' — the feeling of being, of e...</div>
+        <div class="key-words"><span class="kw">Who Am I</span><span class="kw">Self-Inquiry</span><span class="kw">I-Thought</span><span class="kw">Atman</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(26,event)">Mark Studied</button>
+        <div class="key-text-small">Who Am I?</div>
+      </div>
+    </div><div class="card" data-id="27" data-era="Modern (1929)" data-name="Progressive Muscle Relaxation (PMR)" data-origin="USA" data-teacher="Edmund Jacobson" data-keywords="Muscle Groups · Tension-Release · Contrast · Relaxation · Anxiety · Body Awareness" data-technique="Systematically tense each muscle group for 5–10 seconds, then completely release for 20–30 seconds. Notice the contrast between tension and relaxation. Progress from feet upward to head. Teaches the body to recognize and consciously release held tension. No mental focus required." onclick="openModal(27)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">💪</div>
+        <div class="card-title-group">
+          <div class="card-num">#27</div>
+          <div class="card-name">Progressive Muscle Relaxation (PMR)</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1929)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA</div>
+          <div class="meta-chip"><span>📅</span>1929</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Edmund Jacobson</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Systematically tense each muscle group for 5–10 seconds, then completely release for 20–30 seconds. Notice the contrast between tension and relaxation. Progr...</div>
+        <div class="key-words"><span class="kw">Muscle Groups</span><span class="kw">Tension-Release</span><span class="kw">Contrast</span><span class="kw">Relaxation</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(27,event)">Mark Studied</button>
+        <div class="key-text-small">Progressive Relaxation</div>
+      </div>
+    </div><div class="card" data-id="28" data-era="Modern (1932)" data-name="Autogenic Training" data-origin="Germany" data-teacher="Johannes Heinrich Schultz" data-keywords="Auto-Suggestion · Heaviness · Warmth · Calm Heart · Parasympathetic · Self-Regulation" data-technique="Six auto-suggestion formulas repeated mentally: (1) My arm is heavy (2) My arm is warm (3) My heartbeat is calm and regular (4) My breathing is calm (5) My solar plexus is warm (6) My forehead is cool. Each practiced for weeks before adding the next. Creates real physiological changes." onclick="openModal(28)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">🌡️</div>
+        <div class="card-title-group">
+          <div class="card-num">#28</div>
+          <div class="card-name">Autogenic Training</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1932)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Germany</div>
+          <div class="meta-chip"><span>📅</span>1932</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Johannes Heinrich Schultz</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Six auto-suggestion formulas repeated mentally: (1) My arm is heavy (2) My arm is warm (3) My heartbeat is calm and regular (4) My breathing is calm (5) My s...</div>
+        <div class="key-words"><span class="kw">Auto-Suggestion</span><span class="kw">Heaviness</span><span class="kw">Warmth</span><span class="kw">Calm Heart</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(28,event)">Mark Studied</button>
+        <div class="key-text-small">Autogenic Training</div>
+      </div>
+    </div><div class="card" data-id="29" data-era="Modern (1950s)" data-name="Transcendental Meditation (TM)" data-origin="India / Global" data-teacher="Maharishi Mahesh Yogi (1918–2008)" data-keywords="Mantra · Transcendence · Turiya · Effortless · Pure Awareness · Twice Daily" data-technique="Effortless mantra meditation using a personally assigned Sanskrit mantra (a meaningless sound-vibration). Unlike concentration, TM involves allowing the mantra to become quieter and subtler. The mind naturally settles to pure awareness (Turiya). 20 minutes twice daily, eyes closed, sitting comfortably." onclick="openModal(29)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">🕉️</div>
+        <div class="card-title-group">
+          <div class="card-num">#29</div>
+          <div class="card-name">Transcendental Meditation (TM)</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1950s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Global</div>
+          <div class="meta-chip"><span>📅</span>1955–1960s</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Maharishi Mahesh Yogi</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Effortless mantra meditation using a personally assigned Sanskrit mantra (a meaningless sound-vibration). Unlike concentration, TM involves allowing the mant...</div>
+        <div class="key-words"><span class="kw">Mantra</span><span class="kw">Transcendence</span><span class="kw">Turiya</span><span class="kw">Effortless</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(29,event)">Mark Studied</button>
+        <div class="key-text-small">Science of Being and Art of Living</div>
+      </div>
+    </div><div class="card" data-id="30" data-era="Modern (1969)" data-name="Kundalini Yoga Meditation" data-origin="India / USA (popularized by Yogi Bhajan)" data-teacher="Yogi Bhajan (1929–2004)" data-keywords="Kundalini · Shakti · Kriya · Breath of Fire · Bandha · Chakras · Sat Nam" data-technique="Specific sequences (kriyas) combining: Breath of Fire (rapid diaphragmatic breathing), Mudras (hand gestures), Bandhas (body locks: root, navel, throat), Mantras (Sat Nam, Wahe Guru), dynamic movement, drishti (gaze points), and visualization. Extremely activating and energizing practices." onclick="openModal(30)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">⚡</div>
+        <div class="card-title-group">
+          <div class="card-num">#30</div>
+          <div class="card-name">Kundalini Yoga Meditation</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1969)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / USA (popularized by Yogi Bhajan)</div>
+          <div class="meta-chip"><span>📅</span>1969</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Yogi Bhajan</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Specific sequences (kriyas) combining: Breath of Fire (rapid diaphragmatic breathing), Mudras (hand gestures), Bandhas (body locks: root, navel, throat), Man...</div>
+        <div class="key-words"><span class="kw">Kundalini</span><span class="kw">Shakti</span><span class="kw">Kriya</span><span class="kw">Breath of Fire</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(30,event)">Mark Studied</button>
+        <div class="key-text-small">Kundalini Research Institute publications</div>
+      </div>
+    </div><div class="card" data-id="31" data-era="Modern (1970s)" data-name="Dynamic Meditation (Osho)" data-origin="India / Global" data-teacher="Osho (Bhagwan Shree Rajneesh, 1931–1990)" data-keywords="Catharsis · Freeze · Witnessing · Active Meditation · HOO · Dynamic" data-technique="5 stages (60 min): (1) Chaotic breathing through nose, 10 min; (2) Total catharsis — scream, cry, jump, shake — complete let-go, 10 min; (3) Jump with 'HOO! HOO!' shouted at ground, 10 min; (4) STOP — freeze in whatever position — witness without moving, 15 min; (5) Celebration — free joyful dancing, 15 min." onclick="openModal(31)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">💃</div>
+        <div class="card-title-group">
+          <div class="card-num">#31</div>
+          <div class="card-name">Dynamic Meditation (Osho)</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1970s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Global</div>
+          <div class="meta-chip"><span>📅</span>1970s</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Osho</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">5 stages (60 min): (1) Chaotic breathing through nose, 10 min; (2) Total catharsis — scream, cry, jump, shake — complete let-go, 10 min; (3) Jump with 'HOO! ...</div>
+        <div class="key-words"><span class="kw">Catharsis</span><span class="kw">Freeze</span><span class="kw">Witnessing</span><span class="kw">Active Meditation</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(31,event)">Mark Studied</button>
+        <div class="key-text-small">Osho: Meditation: The First and Last Freedom</div>
+      </div>
+    </div><div class="card" data-id="32" data-era="Modern (1970s)" data-name="Holotropic Breathwork" data-origin="USA" data-teacher="Stanislav Grof, Christina Grof" data-keywords="Hyperventilation · Non-ordinary States · Transpersonal · Perinatal · Music · Healing" data-technique="In groups: lie down, breathe rapidly and deeply for 2–3 hours to music chosen to support the journey. Induced hyperventilation creates non-ordinary states — accessing biographical, perinatal (birth), and transpersonal material. A trained 'sitter' watches over. Integration through mandala drawing afterward." onclick="openModal(32)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">🌊</div>
+        <div class="card-title-group">
+          <div class="card-num">#32</div>
+          <div class="card-name">Holotropic Breathwork</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1970s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA</div>
+          <div class="meta-chip"><span>📅</span>1970s</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Stanislav Grof</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">In groups: lie down, breathe rapidly and deeply for 2–3 hours to music chosen to support the journey. Induced hyperventilation creates non-ordinary states — ...</div>
+        <div class="key-words"><span class="kw">Hyperventilation</span><span class="kw">Non-ordinary States</span><span class="kw">Transpersonal</span><span class="kw">Perinatal</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(32,event)">Mark Studied</button>
+        <div class="key-text-small">The Adventure of Self-Discovery</div>
+      </div>
+    </div><div class="card" data-id="33" data-era="Modern (1978)" data-name="Focusing (Eugene Gendlin)" data-origin="USA — University of Chicago" data-teacher="Eugene Gendlin" data-keywords="Felt Sense · Bodily Knowing · Shift · Pre-verbal · Inner Knowing · Somatic" data-technique="Attend to the 'felt sense' — a pre-verbal, bodily knowing of a situation held in the body. Steps: Clear a space → feel what's there → get a felt sense → find a handle (word/image) → resonate back and forth → ask → receive. Stay with the felt sense until it 'shifts' and releases." onclick="openModal(33)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">🫀</div>
+        <div class="card-title-group">
+          <div class="card-num">#33</div>
+          <div class="card-name">Focusing (Eugene Gendlin)</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1978)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA — University of Chicago</div>
+          <div class="meta-chip"><span>📅</span>1978</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Eugene Gendlin</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Attend to the 'felt sense' — a pre-verbal, bodily knowing of a situation held in the body. Steps: Clear a space → feel what's there → get a felt sense → find...</div>
+        <div class="key-words"><span class="kw">Felt Sense</span><span class="kw">Bodily Knowing</span><span class="kw">Shift</span><span class="kw">Pre-verbal</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(33,event)">Mark Studied</button>
+        <div class="key-text-small">Focusing</div>
+      </div>
+    </div><div class="card" data-id="34" data-era="Modern (1979)" data-name="MBSR — Mindfulness-Based Stress Reduction" data-origin="USA — UMass Medical School" data-teacher="Jon Kabat-Zinn" data-keywords="Body Scan · Non-Judging · Present Moment · 8 Weeks · Secular · Non-Striving" data-technique="8-week secular program: Body Scan (systematic attention from feet to head), Sitting Meditation (mindfulness of breath, sounds, sensations, thoughts, awareness itself), Mindful Yoga, Walking Meditation. 9 attitudes: non-judging, patience, beginner's mind, trust, non-striving, acceptance, letting go, gratitude, generosity." onclick="openModal(34)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">🧠</div>
+        <div class="card-title-group">
+          <div class="card-num">#34</div>
+          <div class="card-name">MBSR — Mindfulness-Based Stress Reduction</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (1979)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA — UMass Medical School</div>
+          <div class="meta-chip"><span>📅</span>1979</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Jon Kabat-Zinn</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">8-week secular program: Body Scan (systematic attention from feet to head), Sitting Meditation (mindfulness of breath, sounds, sensations, thoughts, awarenes...</div>
+        <div class="key-words"><span class="kw">Body Scan</span><span class="kw">Non-Judging</span><span class="kw">Present Moment</span><span class="kw">8 Weeks</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(34,event)">Mark Studied</button>
+        <div class="key-text-small">Full Catastrophe Living</div>
+      </div>
+    </div><div class="card" data-id="35" data-era="Modern (1980s–90s)" data-name="Centering Prayer" data-origin="Christian contemplative — USA" data-teacher="Fr. Thomas Keating, Fr. William Meninger, Fr. Basil Pennington" data-keywords="Sacred Word · Consent · Beyond Concepts · God · Contemplative · Receptivity" data-technique="4 guidelines: (1) Choose a sacred word as symbol of consent to God's presence; (2) Sit, close eyes, introduce sacred word; (3) When thoughts arise, gently return to sacred word; (4) At end, remain in silence for 2 minutes. 20 minutes twice daily. Let God be God — release all control." onclick="openModal(35)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">💙</div>
+        <div class="card-title-group">
+          <div class="card-num">#35</div>
+          <div class="card-name">Centering Prayer</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (1980s–90s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Christian contemplative — USA</div>
+          <div class="meta-chip"><span>📅</span>1970s–1980s revival</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Fr. Thomas Keating</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">4 guidelines: (1) Choose a sacred word as symbol of consent to God's presence; (2) Sit, close eyes, introduce sacred word; (3) When thoughts arise, gently re...</div>
+        <div class="key-words"><span class="kw">Sacred Word</span><span class="kw">Consent</span><span class="kw">Beyond Concepts</span><span class="kw">God</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(35,event)">Mark Studied</button>
+        <div class="key-text-small">Open Mind, Open Heart</div>
+      </div>
+    </div><div class="card" data-id="36" data-era="Modern (1990s)" data-name="HeartMath / Cardiac Coherence" data-origin="USA — HeartMath Institute" data-teacher="Doc Childre, Rollin McCraty" data-keywords="HRV · Cardiac Coherence · Appreciation · Heart Focus · Sine Wave · Coherence" data-technique="Quick Coherence: (1) Focus attention on heart area; (2) Breathe slowly through the heart (5 sec in, 5 sec out); (3) Activate a genuine feeling of appreciation, care, or love. Measured by HRV (Heart Rate Variability). Creates smooth, sine-wave HRV pattern = 'coherence' state." onclick="openModal(36)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">❤️</div>
+        <div class="card-title-group">
+          <div class="card-num">#36</div>
+          <div class="card-name">HeartMath / Cardiac Coherence</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (1990s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA — HeartMath Institute</div>
+          <div class="meta-chip"><span>📅</span>1991</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Doc Childre</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Quick Coherence: (1) Focus attention on heart area; (2) Breathe slowly through the heart (5 sec in, 5 sec out); (3) Activate a genuine feeling of appreciatio...</div>
+        <div class="key-words"><span class="kw">HRV</span><span class="kw">Cardiac Coherence</span><span class="kw">Appreciation</span><span class="kw">Heart Focus</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(36,event)">Mark Studied</button>
+        <div class="key-text-small">The HeartMath Solution</div>
+      </div>
+    </div><div class="card" data-id="37" data-era="Modern (1990s)" data-name="MBCT — Mindfulness-Based Cognitive Therapy" data-origin="UK / Canada" data-teacher="Zindel Segal, Mark Williams, John Teasdale" data-keywords="Depression Relapse · Decentering · Thoughts as Events · CBT · 8 Weeks · NHS Recommended" data-technique="Combines MBSR mindfulness with CBT. Teaches participants to recognize and dis-identify from depressive thought patterns. Key practice: watch thoughts as 'mental events' not facts ('I am having the thought that I am worthless' — not 'I am worthless'). Decentering from automatic thoughts." onclick="openModal(37)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">🌿</div>
+        <div class="card-title-group">
+          <div class="card-num">#37</div>
+          <div class="card-name">MBCT — Mindfulness-Based Cognitive Therapy</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (1990s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>UK / Canada</div>
+          <div class="meta-chip"><span>📅</span>1992–2000</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Zindel Segal</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Combines MBSR mindfulness with CBT. Teaches participants to recognize and dis-identify from depressive thought patterns. Key practice: watch thoughts as 'men...</div>
+        <div class="key-words"><span class="kw">Depression Relapse</span><span class="kw">Decentering</span><span class="kw">Thoughts as Events</span><span class="kw">CBT</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(37,event)">Mark Studied</button>
+        <div class="key-text-small">Mindfulness-Based Cognitive Therapy for Depression</div>
+      </div>
+    </div><div class="card" data-id="38" data-era="Modern (1990s)" data-name="ACT Mindfulness (Acceptance &amp; Commitment)" data-origin="USA" data-teacher="Steven Hayes" data-keywords="Defusion · Acceptance · Present Moment · Observer Self · Values · Psychological Flexibility" data-technique="Core mindfulness moves: Defusion (watching thoughts as just thoughts: 'I notice I'm having the thought that...'), Acceptance (opening to difficult feelings without struggling), Present-moment contact (full awareness of here and now), Self-as-context (identifying as the Observer of experience, not its content)." onclick="openModal(38)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">🌱</div>
+        <div class="card-title-group">
+          <div class="card-num">#38</div>
+          <div class="card-name">ACT Mindfulness (Acceptance &amp; Commitment)</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (1990s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA</div>
+          <div class="meta-chip"><span>📅</span>1986–1990s</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Steven Hayes</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Core mindfulness moves: Defusion (watching thoughts as just thoughts: 'I notice I'm having the thought that...'), Acceptance (opening to difficult feelings w...</div>
+        <div class="key-words"><span class="kw">Defusion</span><span class="kw">Acceptance</span><span class="kw">Present Moment</span><span class="kw">Observer Self</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(38,event)">Mark Studied</button>
+        <div class="key-text-small">Get Out of Your Mind and Into Your Life</div>
+      </div>
+    </div><div class="card" data-id="39" data-era="Modern (1990s)" data-name="DBT Mindfulness Skills" data-origin="USA" data-teacher="Marsha Linehan" data-keywords="Wise Mind · Observe · Describe · Non-Judgmental · One-Mindfully · Effective" data-technique="What skills: Observe (notice without labeling), Describe (put words on experience), Participate (fully enter the activity). How skills: Non-judgmentally (without good/bad labels), One-mindfully (one thing at a time), Effectively (do what works). Wise Mind = integration of Emotion Mind and Reasonable Mind." onclick="openModal(39)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">🎭</div>
+        <div class="card-title-group">
+          <div class="card-num">#39</div>
+          <div class="card-name">DBT Mindfulness Skills</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (1990s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA</div>
+          <div class="meta-chip"><span>📅</span>1993</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Marsha Linehan</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">What skills: Observe (notice without labeling), Describe (put words on experience), Participate (fully enter the activity). How skills: Non-judgmentally (wit...</div>
+        <div class="key-words"><span class="kw">Wise Mind</span><span class="kw">Observe</span><span class="kw">Describe</span><span class="kw">Non-Judgmental</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(39,event)">Mark Studied</button>
+        <div class="key-text-small">DBT Skills Training Manual</div>
+      </div>
+    </div><div class="card" data-id="40" data-era="Modern (1990s)" data-name="Kriya Yoga" data-origin="India / Global" data-teacher="Mahavatar Babaji → Lahiri Mahasaya → Sri Yukteswar → Paramahansa Yogananda" data-keywords="Kriya · Pranayama · Spinal Breathing · Chakras · Cosmic Consciousness · Initiation" data-technique="Specific pranayama technique circulating prana up and down the spine through six chakras, combined with mental focus, mantra, and mudras. Said to accelerate spiritual evolution. One Kriya = one year of natural evolution. Practiced in graduated initiations. Deep interiorization of the mind." onclick="openModal(40)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🕉️</div>
+        <div class="card-title-group">
+          <div class="card-num">#40</div>
+          <div class="card-name">Kriya Yoga</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Modern (1990s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Global</div>
+          <div class="meta-chip"><span>📅</span>c. ancient; modern revival 1861</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Mahavatar Babaji → Lahiri Mahasaya → Sri Yukteswar → Paramahansa Yogananda</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Specific pranayama technique circulating prana up and down the spine through six chakras, combined with mental focus, mantra, and mudras. Said to accelerate ...</div>
+        <div class="key-words"><span class="kw">Kriya</span><span class="kw">Pranayama</span><span class="kw">Spinal Breathing</span><span class="kw">Chakras</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(40,event)">Mark Studied</button>
+        <div class="key-text-small">Autobiography of a Yogi</div>
+      </div>
+    </div><div class="card" data-id="41" data-era="Modern (1962)" data-name="Yoga Nidra / NSDR" data-origin="India / Global" data-teacher="Swami Satyananda Saraswati, Andrew Huberman (NSDR term)" data-keywords="Hypnagogic · Body Rotation · Sankalpa · NSDR · 61 Points · Sleep Border" data-technique="8 stages lying in Savasana: (1) Physical relaxation; (2) Sankalpa (plant your resolve); (3) Rotation of consciousness through 61 body points; (4) Breath awareness and counting; (5) Pairs of opposites (heavy/light, hot/cold); (6) Rapid visualization sequence (60 images); (7) Repeat Sankalpa; (8) Return to waking. Maintain consciousness while body sleeps." onclick="openModal(41)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🌙</div>
+        <div class="card-title-group">
+          <div class="card-num">#41</div>
+          <div class="card-name">Yoga Nidra / NSDR</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Modern (1962)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Global</div>
+          <div class="meta-chip"><span>📅</span>c. ancient; systematized 1962</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Swami Satyananda Saraswati</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">8 stages lying in Savasana: (1) Physical relaxation; (2) Sankalpa (plant your resolve); (3) Rotation of consciousness through 61 body points; (4) Breath awar...</div>
+        <div class="key-words"><span class="kw">Hypnagogic</span><span class="kw">Body Rotation</span><span class="kw">Sankalpa</span><span class="kw">NSDR</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(41,event)">Mark Studied</button>
+        <div class="key-text-small">Yoga Nidra</div>
+      </div>
+    </div><div class="card" data-id="42" data-era="Modern (1960s)" data-name="Chakra Meditation" data-origin="Tantric Yoga / India" data-teacher="Various Tantric and Yogic teachers" data-keywords="Chakras · Kundalini · Bija Mantra · Lotus · LAM VAM RAM YAM HAM OM · Energy Centers" data-technique="Direct awareness through 7 chakras: Muladhara (root/LAM), Svadhisthana (sacral/VAM), Manipura (solar/RAM), Anahata (heart/YAM), Vishuddha (throat/HAM), Ajna (third eye/OM), Sahasrara (crown/silence). Visualize color and lotus at each center. Chant bija mantra. Feel qualities opening." onclick="openModal(42)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🔆</div>
+        <div class="card-title-group">
+          <div class="card-num">#42</div>
+          <div class="card-name">Chakra Meditation</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Modern (1960s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Tantric Yoga / India</div>
+          <div class="meta-chip"><span>📅</span>c. 1577 CE text; modern 1960s+</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Various Tantric and Yogic teachers</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Direct awareness through 7 chakras: Muladhara (root/LAM), Svadhisthana (sacral/VAM), Manipura (solar/RAM), Anahata (heart/YAM), Vishuddha (throat/HAM), Ajna ...</div>
+        <div class="key-words"><span class="kw">Chakras</span><span class="kw">Kundalini</span><span class="kw">Bija Mantra</span><span class="kw">Lotus</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(42,event)">Mark Studied</button>
+        <div class="key-text-small">Sat-Cakra-Nirupana</div>
+      </div>
+    </div><div class="card" data-id="43" data-era="Ancient-Modern" data-name="Dzogchen — Great Perfection" data-origin="Tibet / Bon tradition" data-teacher="Guru Rinpoche, Longchenpa, Nyoshul Khen Rinpoche, Sogyal Rinpoche" data-keywords="Rigpa · Pointing Out · Trekcho · Togal · Great Perfection · Natural State" data-technique="A master 'points out' the nature of mind directly. Practice = recognizing and resting in Rigpa (pure, naked, luminous awareness) without modification. Two main practices: Trekcho (Cutting Through — relaxing into the natural state, like releasing a held fist) and Togal (Direct Crossing — vision practices using light and space)." onclick="openModal(43)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🔮</div>
+        <div class="card-title-group">
+          <div class="card-num">#43</div>
+          <div class="card-name">Dzogchen — Great Perfection</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Tibet / Bon tradition</div>
+          <div class="meta-chip"><span>📅</span>c. 800 CE (older in Bon)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Guru Rinpoche</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">A master 'points out' the nature of mind directly. Practice = recognizing and resting in Rigpa (pure, naked, luminous awareness) without modification. Two ma...</div>
+        <div class="key-words"><span class="kw">Rigpa</span><span class="kw">Pointing Out</span><span class="kw">Trekcho</span><span class="kw">Togal</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(43,event)">Mark Studied</button>
+        <div class="key-text-small">Longchenpa's Seven Treasuries, Sogyal Rinpoche: Tibetan Book of Living and Dying</div>
+      </div>
+    </div><div class="card" data-id="44" data-era="Ancient-Modern" data-name="Mahamudra — Great Seal" data-origin="India / Tibet" data-teacher="Tilopa, Naropa, Marpa, Milarepa, Gampopa" data-keywords="Four Yogas · One-Taste · Non-Meditation · Luminous Emptiness · Kagyu · Tilopa" data-technique="Four Yogas: One-Pointedness (steady concentration on breath or mind itself), Simplicity (recognizing the simple, unelaborated nature of mind — empty yet aware), One-Taste (all experience has the same empty, luminous taste), Non-Meditation (no longer any separate meditator or act of meditating — just being). Resting in the nature of mind as is." onclick="openModal(44)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🌊</div>
+        <div class="card-title-group">
+          <div class="card-num">#44</div>
+          <div class="card-name">Mahamudra — Great Seal</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Tibet</div>
+          <div class="meta-chip"><span>📅</span>c. 1000 CE (Kagyu lineage)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Tilopa</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Four Yogas: One-Pointedness (steady concentration on breath or mind itself), Simplicity (recognizing the simple, unelaborated nature of mind — empty yet awar...</div>
+        <div class="key-words"><span class="kw">Four Yogas</span><span class="kw">One-Taste</span><span class="kw">Non-Meditation</span><span class="kw">Luminous Emptiness</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(44,event)">Mark Studied</button>
+        <div class="key-text-small">Mahamudra: The Quintessence of Mind and Meditation</div>
+      </div>
+    </div><div class="card" data-id="45" data-era="Ancient-Modern" data-name="Qigong Meditation" data-origin="China (Taoist and TCM tradition)" data-teacher="Various Taoist and medical masters" data-keywords="Qi · Zhan Zhuang · Yi · Meridians · TCM · Ba Duan Jin · Standing Meditation" data-technique="Still Qigong: Zhan Zhuang (Standing Like a Tree) — stand motionless with arms raised for extended periods. Moving Qigong: Ba Duan Jin, Yi Jin Jing, Five Animal Frolics — slow flowing movements synchronized with breath. Mind (Yi) directs Qi through meridians. Medical Qigong for specific organs." onclick="openModal(45)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🌀</div>
+        <div class="card-title-group">
+          <div class="card-num">#45</div>
+          <div class="card-name">Qigong Meditation</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>China (Taoist and TCM tradition)</div>
+          <div class="meta-chip"><span>📅</span>c. 2000 BCE roots; formalized ~500 BCE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Various Taoist and medical masters</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Still Qigong: Zhan Zhuang (Standing Like a Tree) — stand motionless with arms raised for extended periods. Moving Qigong: Ba Duan Jin, Yi Jin Jing, Five Anim...</div>
+        <div class="key-words"><span class="kw">Qi</span><span class="kw">Zhan Zhuang</span><span class="kw">Yi</span><span class="kw">Meridians</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(45,event)">Mark Studied</button>
+        <div class="key-text-small">Classic of Internal Medicine</div>
+      </div>
+    </div><div class="card" data-id="46" data-era="Ancient-Modern" data-name="Tai Chi as Moving Meditation" data-origin="China" data-teacher="Chen Wangting, Yang Luchan, Yang Chengfu" data-keywords="Yi · Qi · Song · Forms · Moving Meditation · Balance · Chen Yang Wu Sun Hao" data-technique="Slow, deliberate, continuous sequences of postures (forms) with mind fully present in every movement. Yi (mental intention) directs Qi through body. Movements are circular, rooted, flowing. Mind leads Qi; Qi leads body. Practice cultivates Song (relaxed sinking), Ting Jin (listening energy), and Zhong Ding (central equilibrium)." onclick="openModal(46)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🥋</div>
+        <div class="card-title-group">
+          <div class="card-num">#46</div>
+          <div class="card-name">Tai Chi as Moving Meditation</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>China</div>
+          <div class="meta-chip"><span>📅</span>c. 1600s (Chen family lineage)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Chen Wangting</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Slow, deliberate, continuous sequences of postures (forms) with mind fully present in every movement. Yi (mental intention) directs Qi through body. Movement...</div>
+        <div class="key-words"><span class="kw">Yi</span><span class="kw">Qi</span><span class="kw">Song</span><span class="kw">Forms</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(46,event)">Mark Studied</button>
+        <div class="key-text-small">Tai Chi Classics</div>
+      </div>
+    </div><div class="card" data-id="47" data-era="Classical (Hatha Yoga)" data-name="Trataka — Candle Gazing" data-origin="India (Hatha Yoga tradition)" data-teacher="Swatmarama (author of Hatha Yoga Pradipika)" data-keywords="Trataka · Flame · Unblinking · Ajna · Third Eye · Concentration · Yantra" data-technique="Fix a steady, unblinking gaze at a candle flame at eye level, 1–2 feet away. Maintain gaze until eyes water. Close eyes and visualize the after-image at the Ajna chakra (brow center). Reopen when image fades. Repeat. Advanced: gaze at a black dot, crystal, moon, rising sun, or yantra." onclick="openModal(47)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🕯️</div>
+        <div class="card-title-group">
+          <div class="card-num">#47</div>
+          <div class="card-name">Trataka — Candle Gazing</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Classical (Hatha Yoga)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India (Hatha Yoga tradition)</div>
+          <div class="meta-chip"><span>📅</span>c. 1500 CE (Hatha Yoga Pradipika)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Swatmarama</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Fix a steady, unblinking gaze at a candle flame at eye level, 1–2 feet away. Maintain gaze until eyes water. Close eyes and visualize the after-image at the ...</div>
+        <div class="key-words"><span class="kw">Trataka</span><span class="kw">Flame</span><span class="kw">Unblinking</span><span class="kw">Ajna</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(47,event)">Mark Studied</button>
+        <div class="key-text-small">Hatha Yoga Pradipika</div>
+      </div>
+    </div><div class="card" data-id="48" data-era="Ancient-Modern" data-name="Nada Yoga / Sound Bath Meditation" data-origin="India / Global" data-teacher="Swami Nada Brahmananda; various" data-keywords="Nada · Inner Sound · Anahata · Singing Bowls · Binaural · Gong · Sound Healing" data-technique="Nada Yoga: attend to internal sound (Anahata Nada — the unstruck, inner sound of pure consciousness). Progress through grosser to subtler inner sounds. Sound Bath: passive immersion in Tibetan bowls, crystal bowls, gongs, tuning forks while lying in Savasana. Binaural beats: different frequencies in each ear create brain entrainment." onclick="openModal(48)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🔔</div>
+        <div class="card-title-group">
+          <div class="card-num">#48</div>
+          <div class="card-name">Nada Yoga / Sound Bath Meditation</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Global</div>
+          <div class="meta-chip"><span>📅</span>c. ancient; modern sound bath 20th century</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Swami Nada Brahmananda; various</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Nada Yoga: attend to internal sound (Anahata Nada — the unstruck, inner sound of pure consciousness). Progress through grosser to subtler inner sounds. Sound...</div>
+        <div class="key-words"><span class="kw">Nada</span><span class="kw">Inner Sound</span><span class="kw">Anahata</span><span class="kw">Singing Bowls</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(48,event)">Mark Studied</button>
+        <div class="key-text-small">Hatha Yoga Pradipika</div>
+      </div>
+    </div><div class="card" data-id="49" data-era="Modern (2000s)" data-name="Nondual / Open Awareness Meditation" data-origin="Global (Advaita, Dzogchen, modern teachers)" data-teacher="Adyashanti, Rupert Spira, Francis Lucille, Jean Klein, Tony Parsons" data-keywords="Open Awareness · Awareness Itself · Non-Dual · Rupert Spira · Self-Recognition · No-Technique" data-technique="Rest as awareness itself — not as something awareness sees, but as that which is aware. Notice: What is aware right now? Can awareness be absent? Allow everything to arise and pass within open, spacious awareness without preference or rejection. Key inquiry: 'Who or what is aware right now?' No technique — simply being what you already are." onclick="openModal(49)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">✨</div>
+        <div class="card-title-group">
+          <div class="card-num">#49</div>
+          <div class="card-name">Nondual / Open Awareness Meditation</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (2000s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Global (Advaita, Dzogchen, modern teachers)</div>
+          <div class="meta-chip"><span>📅</span>Late 20th–21st century</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Adyashanti</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Rest as awareness itself — not as something awareness sees, but as that which is aware. Notice: What is aware right now? Can awareness be absent? Allow every...</div>
+        <div class="key-words"><span class="kw">Open Awareness</span><span class="kw">Awareness Itself</span><span class="kw">Non-Dual</span><span class="kw">Rupert Spira</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(49,event)">Mark Studied</button>
+        <div class="key-text-small">Being Aware of Being Aware</div>
+      </div>
+    </div><div class="card" data-id="50" data-era="Modern (2010s)" data-name="App-Based Mindfulness" data-origin="Global (Silicon Valley + contemplative traditions)" data-teacher="Andy Puddicombe (Headspace), Tara Brach (Insight Timer), Sam Harris (Waking Up)" data-keywords="Headspace · Calm · Insight Timer · Waking Up · EEG · Neurofeedback · Digital Mindfulness" data-technique="Guided meditation via apps: Headspace, Calm, Insight Timer, Waking Up, Ten Percent Happier. Body scans, breath awareness, loving-kindness, sleep meditations, SOS sessions for acute anxiety, movement. Science explanations embedded. Neurofeedback via Muse EEG headband giving real-time brainwave audio feedback." onclick="openModal(50)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">📱</div>
+        <div class="card-title-group">
+          <div class="card-num">#50</div>
+          <div class="card-name">App-Based Mindfulness</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (2010s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Global (Silicon Valley + contemplative traditions)</div>
+          <div class="meta-chip"><span>📅</span>2012–present</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Andy Puddicombe</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Guided meditation via apps: Headspace, Calm, Insight Timer, Waking Up, Ten Percent Happier. Body scans, breath awareness, loving-kindness, sleep meditations,...</div>
+        <div class="key-words"><span class="kw">Headspace</span><span class="kw">Calm</span><span class="kw">Insight Timer</span><span class="kw">Waking Up</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(50,event)">Mark Studied</button>
+        <div class="key-text-small">App ecosystems; Sam Harris: Waking Up; Dan Harris: 10% Happier</div>
+      </div>
+    </div><div class="card" data-id="51" data-era="Modern (1995)" data-name="Laughter Yoga / Laughter Meditation" data-origin="India / Global" data-teacher="Dr. Madan Kataria (Mumbai)" data-keywords="Laughter · Ho-Ho-Ha-Ha · Endorphins · Unconditional · Playfulness · Present Moment" data-technique="In a group circle: playful laughter exercises using eye contact and childlike playfulness to trigger real laughter. Alternated with pranayama breathing exercises. Sustained laughter produces genuine neurochemical release. The body cannot distinguish fake from real laughter — same benefits. Ho-Ho-Ha-Ha exercises. 16,000+ laughter clubs in 110+ countries." onclick="openModal(51)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">😂</div>
+        <div class="card-title-group">
+          <div class="card-num">#51</div>
+          <div class="card-name">Laughter Yoga / Laughter Meditation</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1995)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>India / Global</div>
+          <div class="meta-chip"><span>📅</span>1995</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Dr. Madan Kataria</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">In a group circle: playful laughter exercises using eye contact and childlike playfulness to trigger real laughter. Alternated with pranayama breathing exerc...</div>
+        <div class="key-words"><span class="kw">Laughter</span><span class="kw">Ho-Ho-Ha-Ha</span><span class="kw">Endorphins</span><span class="kw">Unconditional</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(51,event)">Mark Studied</button>
+        <div class="key-text-small">Laugh for No Reason</div>
+      </div>
+    </div><div class="card" data-id="52" data-era="Modern (1970s)" data-name="Nature-Based / Shinrin-Yoku (Forest Bathing)" data-origin="Japan (Shinrin-yoku coined 1982); global indigenous traditions" data-teacher="Dr. Qing Li (modern research); indigenous traditions worldwide" data-keywords="Shinrin-Yoku · Phytoncides · Senses · Forest · Earth · Grounding · Nature Connection" data-technique="Slow, mindful walk through a forest, engaging all senses fully. Smell the phytoncides (chemicals released by trees). See the dappled light. Hear the birds and wind. Touch bark. No destination — simply BE in the forest. Also: Earth meditation (bare feet on ground), Sky gazing (Dzogchen), Fire gazing, Water watching." onclick="openModal(52)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">🌿</div>
+        <div class="card-title-group">
+          <div class="card-num">#52</div>
+          <div class="card-name">Nature-Based / Shinrin-Yoku (Forest Bathing)</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1970s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Japan (Shinrin-yoku coined 1982); global indigenous traditions</div>
+          <div class="meta-chip"><span>📅</span>1982 (Japan), prehistoric (indigenous)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Dr. Qing Li</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Slow, mindful walk through a forest, engaging all senses fully. Smell the phytoncides (chemicals released by trees). See the dappled light. Hear the birds an...</div>
+        <div class="key-words"><span class="kw">Shinrin-Yoku</span><span class="kw">Phytoncides</span><span class="kw">Senses</span><span class="kw">Forest</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(52,event)">Mark Studied</button>
+        <div class="key-text-small">Forest Bathing</div>
+      </div>
+    </div><div class="card" data-id="53" data-era="Ancient-Modern" data-name="Taoist Inner Alchemy / Neidan" data-origin="China (Taoist tradition)" data-teacher="Various Taoist masters; Wei Boyang" data-keywords="Microcosmic Orbit · Dantian · Jing Qi Shen · Alchemy · Du Mai · Ren Mai" data-technique="Microcosmic Orbit: circulate Qi up the spine (Du Mai/Governor Vessel) and down the front (Ren Mai/Conception Vessel) in a continuous loop. Three Dantian cultivation: lower (Jing/essence, below navel), middle (Qi/heart-mind, chest), upper (Shen/spirit, head). Refine Jing → Qi → Shen → Xu → Tao." onclick="openModal(53)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🌐</div>
+        <div class="card-title-group">
+          <div class="card-num">#53</div>
+          <div class="card-name">Taoist Inner Alchemy / Neidan</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>China (Taoist tradition)</div>
+          <div class="meta-chip"><span>📅</span>c. 700–1000 CE (fully developed)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Various Taoist masters; Wei Boyang</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Microcosmic Orbit: circulate Qi up the spine (Du Mai/Governor Vessel) and down the front (Ren Mai/Conception Vessel) in a continuous loop. Three Dantian cult...</div>
+        <div class="key-words"><span class="kw">Microcosmic Orbit</span><span class="kw">Dantian</span><span class="kw">Jing Qi Shen</span><span class="kw">Alchemy</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(53,event)">Mark Studied</button>
+        <div class="key-text-small">The Secret of the Golden Flower, Cantong Qi</div>
+      </div>
+    </div><div class="card" data-id="54" data-era="Modern (2000s)" data-name="Self-Compassion Practice (MSC)" data-origin="USA" data-teacher="Kristin Neff (researcher), Christopher Germer (therapist)" data-keywords="Self-Kindness · Common Humanity · Mindfulness · MSC · Shame · Self-Criticism · Resilience" data-technique="Self-Compassion Break: (1) 'This is a moment of suffering' — mindfulness of pain; (2) 'Suffering is a part of life' — common humanity; (3) Hand on heart: 'May I give myself the compassion I need' — self-kindness. Loving-kindness phrases directed toward the self. Compassionate body scan. Fierce self-compassion for boundary-setting." onclick="openModal(54)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">🌸</div>
+        <div class="card-title-group">
+          <div class="card-num">#54</div>
+          <div class="card-name">Self-Compassion Practice (MSC)</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (2000s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA</div>
+          <div class="meta-chip"><span>📅</span>2010</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Kristin Neff</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Self-Compassion Break: (1) 'This is a moment of suffering' — mindfulness of pain; (2) 'Suffering is a part of life' — common humanity; (3) Hand on heart: 'Ma...</div>
+        <div class="key-words"><span class="kw">Self-Kindness</span><span class="kw">Common Humanity</span><span class="kw">Mindfulness</span><span class="kw">MSC</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(54,event)">Mark Studied</button>
+        <div class="key-text-small">Self-Compassion: The Proven Power of Being Kind to Yourself</div>
+      </div>
+    </div><div class="card" data-id="55" data-era="Modern (2000s)" data-name="Compassion-Focused / CCT &amp; CBCT" data-origin="USA — Stanford &amp; Emory Universities" data-teacher="Thupten Jinpa (CCT/Stanford), Geshe Lobsang Tenzin Negi (CBCT/Emory)" data-keywords="Compassion · CCT · CBCT · Lojong · Interdependence · Prosocial · Empathy" data-technique="CCT (8 weeks): Mindfulness, loving-kindness, compassion for self, compassion for all. CBCT: Analytical meditation on interdependence, developing compassion systematically using Lojong (mind training) logic. Both secular and based on Tibetan compassion training adapted for Western science context." onclick="openModal(55)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">💚</div>
+        <div class="card-title-group">
+          <div class="card-num">#55</div>
+          <div class="card-name">Compassion-Focused / CCT &amp; CBCT</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (2000s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>USA — Stanford &amp; Emory Universities</div>
+          <div class="meta-chip"><span>📅</span>2009–2012</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Thupten Jinpa</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">CCT (8 weeks): Mindfulness, loving-kindness, compassion for self, compassion for all. CBCT: Analytical meditation on interdependence, developing compassion s...</div>
+        <div class="key-words"><span class="kw">Compassion</span><span class="kw">CCT</span><span class="kw">CBCT</span><span class="kw">Lojong</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(55,event)">Mark Studied</button>
+        <div class="key-text-small">The Compassionate Life</div>
+      </div>
+    </div><div class="card" data-id="56" data-era="Ancient-Modern" data-name="Tonglen — Sending and Receiving" data-origin="Tibet (Lojong — mind training tradition)" data-teacher="Atisha, Geshe Chekhawa, Pema Chödrön (modern popularizer)" data-keywords="Tonglen · Sending · Receiving · Lojong · Self-Cherishing · Dark Smoke · White Light" data-technique="Breathe IN the suffering of others (visualized as dark, hot, heavy smoke). Breathe OUT happiness, relief, and light (white, cool, spacious). Start with yourself. Expand to loved ones, neutral people, difficult people, all beings. Radically reverses the habitual self-cherishing mind. Can be done at any moment of witness to suffering." onclick="openModal(56)">
+      <div class="card-header" style="border-left:4px solid #d35400">
+        <div class="card-symbol">🪷</div>
+        <div class="card-title-group">
+          <div class="card-num">#56</div>
+          <div class="card-name">Tonglen — Sending and Receiving</div>
+          <span class="card-era" style="background:#d3540022;color:#d35400;border:1px solid #d3540044;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Tibet (Lojong — mind training tradition)</div>
+          <div class="meta-chip"><span>📅</span>c. 1000 CE</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Atisha</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Breathe IN the suffering of others (visualized as dark, hot, heavy smoke). Breathe OUT happiness, relief, and light (white, cool, spacious). Start with yours...</div>
+        <div class="key-words"><span class="kw">Tonglen</span><span class="kw">Sending</span><span class="kw">Receiving</span><span class="kw">Lojong</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(56,event)">Mark Studied</button>
+        <div class="key-text-small">Start Where You Are</div>
+      </div>
+    </div><div class="card" data-id="57" data-era="Ancient-Modern" data-name="Walking Meditation (Cross-Tradition)" data-origin="Multiple traditions worldwide" data-teacher="The Buddha, Thich Nhat Hanh, Dogen" data-keywords="Kinhin · Cankama · Labyrinth · Step · Presence · Slow · Movement Meditation" data-technique="Kinhin (Zen): very slow, each step synchronized with breath. Cankama (Theravada): back and forth on a set path, noting each component of the step (lifting, moving, placing, touching, pressing). Mindful Walking (MBSR): slow ordinary walking with full awareness of each sensation. Labyrinth walking (Christian): spiral path as inner journey." onclick="openModal(57)">
+      <div class="card-header" style="border-left:4px solid #8e44ad">
+        <div class="card-symbol">🚶</div>
+        <div class="card-title-group">
+          <div class="card-num">#57</div>
+          <div class="card-name">Walking Meditation (Cross-Tradition)</div>
+          <span class="card-era" style="background:#8e44ad22;color:#8e44ad;border:1px solid #8e44ad44;">Ancient-Modern</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Multiple traditions worldwide</div>
+          <div class="meta-chip"><span>📅</span>c. 500 BCE onward</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>The Buddha</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Kinhin (Zen): very slow, each step synchronized with breath. Cankama (Theravada): back and forth on a set path, noting each component of the step (lifting, m...</div>
+        <div class="key-words"><span class="kw">Kinhin</span><span class="kw">Cankama</span><span class="kw">Labyrinth</span><span class="kw">Step</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(57,event)">Mark Studied</button>
+        <div class="key-text-small">The Long Road Turns to Joy</div>
+      </div>
+    </div><div class="card" data-id="58" data-era="Modern (1970s)" data-name="Breathwork Meditation (Modern Methods)" data-origin="Global" data-teacher="Stanislav Grof (Holotropic), Wim Hof, Dr. Andrew Weil (4-7-8)" data-keywords="Wim Hof · Box Breathing · 4-7-8 · Coherent Breathing · HRV · Pranayama · Breath Retention" data-technique="Wim Hof: 30 power breaths → breath retention → recovery breath → 3 rounds. Box Breathing: 4 counts in, hold 4, out 4, hold 4. 4-7-8: inhale 4, hold 7, exhale 8. Coherent Breathing: 5 seconds in, 5 out continuously. Resonance breathing maximizes HRV. Each pattern creates distinct physiological and mental effects." onclick="openModal(58)">
+      <div class="card-header" style="border-left:4px solid #1abc9c">
+        <div class="card-symbol">💨</div>
+        <div class="card-title-group">
+          <div class="card-num">#58</div>
+          <div class="card-name">Breathwork Meditation (Modern Methods)</div>
+          <span class="card-era" style="background:#1abc9c22;color:#1abc9c;border:1px solid #1abc9c44;">Modern (1970s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Global</div>
+          <div class="meta-chip"><span>📅</span>1970s–present</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Stanislav Grof</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Wim Hof: 30 power breaths → breath retention → recovery breath → 3 rounds. Box Breathing: 4 counts in, hold 4, out 4, hold 4. 4-7-8: inhale 4, hold 7, exhale...</div>
+        <div class="key-words"><span class="kw">Wim Hof</span><span class="kw">Box Breathing</span><span class="kw">4-7-8</span><span class="kw">Coherent Breathing</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(58,event)">Mark Studied</button>
+        <div class="key-text-small">The Wim Hof Method, Dr. Weil's breathing programs</div>
+      </div>
+    </div><div class="card" data-id="59" data-era="Modern (2020s)" data-name="Psychedelic-Assisted Meditation" data-origin="Global (Johns Hopkins, Imperial College, NYU)" data-teacher="Roland Griffiths, Robin Carhart-Harris, Rick Doblin" data-keywords="Psilocybin · MDMA · Ego Dissolution · Default Mode Network · Integration · Mystical Experience" data-technique="Psilocybin or MDMA administered in a clinical/therapeutic setting with preparation and integration. The psychedelic suppresses the default mode network — producing ego dissolution, oceanic boundlessness, sense of unity, and nondual awareness. Integrated through contemplative practice before and after. Meditation enhances and structures the experience." onclick="openModal(59)">
+      <div class="card-header" style="border-left:4px solid #16a085">
+        <div class="card-symbol">🍄</div>
+        <div class="card-title-group">
+          <div class="card-num">#59</div>
+          <div class="card-name">Psychedelic-Assisted Meditation</div>
+          <span class="card-era" style="background:#16a08522;color:#16a085;border:1px solid #16a08544;">Modern (2020s)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Global (Johns Hopkins, Imperial College, NYU)</div>
+          <div class="meta-chip"><span>📅</span>2020s (modern revival; ancient shamanic roots)</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Roland Griffiths</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Psilocybin or MDMA administered in a clinical/therapeutic setting with preparation and integration. The psychedelic suppresses the default mode network — pro...</div>
+        <div class="key-words"><span class="kw">Psilocybin</span><span class="kw">MDMA</span><span class="kw">Ego Dissolution</span><span class="kw">Default Mode Network</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(59,event)">Mark Studied</button>
+        <div class="key-text-small">How to Change Your Mind</div>
+      </div>
+    </div><div class="card" data-id="60" data-era="Indigenous (Prehistoric–Present)" data-name="Indigenous &amp; Shamanic Meditation" data-origin="Worldwide (prehistoric to present)" data-teacher="Aboriginal Elders, Native American tradition keepers, Andean curanderos" data-keywords="Dadirri · Vision Quest · Shamanism · Ho'oponopono · Drumming · Ubuntu · Ancestral" data-technique="Aboriginal Dadirri (deep listening — patient, receptive inner stillness in nature), Native American Vision Quest (4 days alone in nature without food), Andean Despacho ceremony, Shamanic drumming journeys (4–7 beats/sec inducing theta brainwaves), Hawaiian Ho'oponopono ('I love you, I'm sorry, please forgive me, thank you'), African Ubuntu contemplation." onclick="openModal(60)">
+      <div class="card-header" style="border-left:4px solid #7f8c8d">
+        <div class="card-symbol">🪘</div>
+        <div class="card-title-group">
+          <div class="card-num">#60</div>
+          <div class="card-name">Indigenous &amp; Shamanic Meditation</div>
+          <span class="card-era" style="background:#7f8c8d22;color:#7f8c8d;border:1px solid #7f8c8d44;">Indigenous (Prehistoric–Present)</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>Worldwide (prehistoric to present)</div>
+          <div class="meta-chip"><span>📅</span>Prehistoric — ongoing</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>Aboriginal Elders</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">Aboriginal Dadirri (deep listening — patient, receptive inner stillness in nature), Native American Vision Quest (4 days alone in nature without food), Andea...</div>
+        <div class="key-words"><span class="kw">Dadirri</span><span class="kw">Vision Quest</span><span class="kw">Shamanism</span><span class="kw">Ho'oponopono</span></div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(60,event)">Mark Studied</button>
+        <div class="key-text-small">Dadirri: A Reflection</div>
+      </div>
+    </div><div id="noResults" class="no-results" style="display:none">No meditations found. Try a different search.</div></div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<footer>
+  🌍 Compiled from traditions spanning 7,000+ years across every major civilization.<br>
+  Click any card to expand · Mark cards as studied to track your journey · Your progress is saved locally.
+</footer>
+
+<script>
+const MEDS = [{"id":1,"era":"Ancient (5000–1500 BCE)","eraColor":"#c0392b","symbol":"🔥","name":"Vedic / Samhita Meditation","origin":"India (Indus Valley)","year":"c. 5000 BCE","teacher":"Vedic Rishis / Seers","technique":"Chanting sacred Vedic hymns and mantras during ritual fire ceremonies (Yajnas). Repetitive recitation of hymns combined with breath awareness to align with cosmic forces (Rita). Practitioners sat in stillness reciting mantras.","goal":"Union with the divine cosmic order (Rita); purification of the mind.","keyText":"The Vedas (Rigveda, Samaveda)","keyWords":"Mantra · Dharana · Yajna · Rita · Cosmic Order"},{"id":2,"era":"Ancient (900–400 BCE)","eraColor":"#c0392b","symbol":"🪔","name":"Upanishadic / Jnana Dhyana","origin":"India","year":"c. 900–400 BCE","teacher":"Yajnavalkya, Uddalaka Aruni","technique":"Deep contemplation on 'Who am I?' Turning awareness inward to realize the identity of individual self (Atman) with universal consciousness (Brahman). Pure self-inquiry — no object, no mantra. Sitting in stillness until the 'I-thought' dissolves.","goal":"Moksha — liberation through direct knowledge (Jnana) of the Self.","keyText":"Mandukya Upanishad, Chandogya Upanishad","keyWords":"Atman · Brahman · Jnana · Moksha · Self-Inquiry"},{"id":3,"era":"Ancient (800–200 BCE)","eraColor":"#c0392b","symbol":"⚖️","name":"Samkhya-Yoga Meditation","origin":"India","year":"c. 800–200 BCE","teacher":"Kapila (legendary founder)","technique":"Disciplined observation of thoughts and emotions without reacting. Discriminative wisdom (Viveka) to distinguish pure consciousness (Purusha) from matter (Prakriti). Witness the material mind and dis-identify from it completely.","goal":"Liberation of pure consciousness from entanglement with matter.","keyText":"Samkhya Karika by Ishvarakrishna","keyWords":"Purusha · Prakriti · Viveka · Witness · Discrimination"},{"id":4,"era":"Ancient (600–400 BCE)","eraColor":"#8e44ad","symbol":"☯️","name":"Taoist Meditation / Zuowang","origin":"China","year":"c. 600–400 BCE","teacher":"Laozi, Zhuangzi","technique":"Sit quietly. Let go of all thoughts, sensations, and the sense of self. Don't try — simply BE. Allow the mind to dissolve into the Tao. Sub-practices: Shouyi (guarding the One), Neiguan (inner visualization), Xin Zhai (fasting of the heart-mind).","goal":"Becoming one with the Tao — naturalness, spontaneity, effortless harmony.","keyText":"Tao Te Ching, Zhuangzi","keyWords":"Tao · Wu Wei · Zuowang · Naturalness · Sitting-Forgetting"},{"id":5,"era":"Ancient (500 BCE)","eraColor":"#d35400","symbol":"☸️","name":"Early Buddhist / Theravāda","origin":"India (Bodh Gaya)","year":"c. 500 BCE","teacher":"Siddhartha Gautama — The Buddha","technique":"Two main branches: Samatha (calm abiding — stabilizing the mind on an object) and Vipassana (insight — seeing impermanence, suffering, non-self). 40 meditation subjects (Kammatthana) assigned by a teacher to match personality type.","goal":"Nibbana — complete cessation of suffering and the cycle of rebirth.","keyText":"Pali Canon, Majjhima Nikaya, Visuddhimagga","keyWords":"Samatha · Vipassana · Nibbana · Jhana · Kammatthana"},{"id":6,"era":"Ancient (500 BCE)","eraColor":"#d35400","symbol":"🕊️","name":"Jain Meditation / Samayika","origin":"India","year":"c. 500 BCE","teacher":"Mahavira (24th Tirthankara)","technique":"Samayika: 48-minute daily practice of equanimity — withdrawing from all worldly activity and sitting in absolute stillness. Four types: Arta (sorrowful — avoid), Raudra (wrathful — avoid), Dharma (virtuous — cultivate), Shukla (pure/luminous — highest).","goal":"Moksha — liberation from all karma through pure, non-violent awareness.","keyText":"Tattvartha Sutra, Acaranga Sutra","keyWords":"Ahimsa · Samayika · Shukla Dhyana · Equanimity · Non-violence"},{"id":7,"era":"Classical (500 BCE)","eraColor":"#27ae60","symbol":"🌬️","name":"Anapanasati — Mindfulness of Breathing","origin":"Early Buddhism, India","year":"c. 500 BCE","teacher":"The Buddha (detailed in MN 118)","technique":"16 steps in 4 tetrads: Know long/short breath, whole body, calm body; experience joy, happiness, mental formations; gladden, concentrate, liberate the mind; contemplate impermanence, fading, cessation, relinquishment. Focus on breath at nostrils or abdomen.","goal":"Full awakening through complete mastery of breath awareness and the four tetrads.","keyText":"Anapanasati Sutta (MN 118)","keyWords":"Breath · 16 Steps · 4 Tetrads · Impermanence · Mindfulness"},{"id":8,"era":"Classical (500 BCE+)","eraColor":"#27ae60","symbol":"👁️","name":"Vipassana Meditation","origin":"India / Myanmar","year":"c. 500 BCE, refined 19th–20th c.","teacher":"The Buddha · Mahasi Sayadaw · S.N. Goenka","technique":"Body scanning head-to-feet (Goenka) or noting 'rising-falling' of abdomen (Mahasi). Observe every sensation without reacting. Directly perceive the three characteristics of all existence: Anicca (impermanence), Dukkha (suffering), Anatta (non-self).","goal":"Experiential wisdom (Panna) — freedom from reactivity — leading to complete liberation.","keyText":"Mahasi Sayadaw texts, Goenka discourses","keyWords":"Anicca · Dukkha · Anatta · Body Scan · Noting"},{"id":9,"era":"Classical (500 BCE)","eraColor":"#27ae60","symbol":"💛","name":"Loving-Kindness / Metta Bhavana","origin":"Theravāda Buddhism, India","year":"c. 500 BCE","teacher":"The Buddha","technique":"Repeat: 'May I be happy. May I be healthy. May I be safe. May I live with ease.' Expand progressively: self → loved ones → neutral people → difficult people → all beings without exception. The 4 Brahmaviharas: Metta, Karuna, Mudita, Upekkha.","goal":"Boundless love and compassion; dissolving hatred and ill-will toward all beings.","keyText":"Metta Sutta, Karaniya Metta Sutta, Visuddhimagga","keyWords":"Metta · Karuna · Mudita · Upekkha · Brahmaviharas"},{"id":10,"era":"Classical (400 BCE–400 CE)","eraColor":"#27ae60","symbol":"🧘","name":"Patanjali's Ashtanga / Raja Yoga","origin":"India","year":"c. 400 BCE–400 CE","teacher":"Patanjali","technique":"Eight limbs: Yama (ethics), Niyama (observances), Asana (posture), Pranayama (breath), Pratyahara (sense withdrawal), Dharana (concentration), Dhyana (sustained meditation), Samadhi (absorption). The final three together (Samyama) are the core meditative practice.","goal":"Kaivalya — complete isolation and independence of pure consciousness from matter.","keyText":"Yoga Sutras of Patanjali (196 sutras)","keyWords":"Ashtanga · Dharana · Dhyana · Samadhi · Samyama · Kaivalya"},{"id":11,"era":"Classical (100 BCE–500 CE)","eraColor":"#27ae60","symbol":"🌸","name":"Mahayana Buddhist Meditation","origin":"India, Central Asia","year":"c. 100 BCE–500 CE","teacher":"Nagarjuna, Asanga, Vasubandhu","technique":"Bodhicitta meditation — awakening the mind of enlightenment for all beings. Shunyata contemplation — meditating on emptiness (lack of inherent self in all phenomena). Buddha-nature meditation — resting in the inherent luminous quality of mind.","goal":"Full Buddhahood for the benefit of all sentient beings.","keyText":"Heart Sutra, Diamond Sutra, Prajnaparamita Sutras","keyWords":"Bodhicitta · Shunyata · Emptiness · Buddha-nature · Compassion"},{"id":12,"era":"Classical (300–400 CE)","eraColor":"#2980b9","symbol":"✝️","name":"Desert Fathers' Hesychasm","origin":"Egyptian Desert, Christian tradition","year":"c. 300–400 CE","teacher":"Abba Anthony, Abba Poemen, Amma Syncletica","technique":"Stillness (Hesychia) — sitting in silence, guarding the heart, letting go of thoughts (logismoi) without engaging them. Watch thoughts arise and pass like clouds. Return to stillness. The heart is the center of prayer.","goal":"Union with God through inner stillness; purification of the heart.","keyText":"Sayings of the Desert Fathers (Apophthegmata Patrum)","keyWords":"Hesychia · Stillness · Logismoi · Heart · Apatheia"},{"id":13,"era":"Medieval (500 CE+)","eraColor":"#2980b9","symbol":"📿","name":"Jesus Prayer / Prayer of the Heart","origin":"Christian Orthodox tradition","year":"c. 500 CE (formalized by 13th century)","teacher":"St. Gregory Palamas, Mt. Athos monks","technique":"Continuous repetition of: 'Lord Jesus Christ, Son of God, have mercy on me, a sinner.' Synchronized with the breath — prayer on inhale AND exhale. Gradually internalized until it continues spontaneously — even during sleep. Head bowed toward heart.","goal":"Theosis — union with God; the prayer descending from head into the heart.","keyText":"The Philokalia, The Way of a Pilgrim","keyWords":"Hesychasm · Heart Prayer · Theosis · Breath · Lord Jesus Christ"},{"id":14,"era":"Medieval (500 CE)","eraColor":"#2980b9","symbol":"📖","name":"Lectio Divina","origin":"Christian monastic tradition (St. Benedict)","year":"c. 500 CE","teacher":"St. Benedict of Nursia, Guigo II","technique":"Four stages: Lectio (read Scripture slowly), Meditatio (reflect and ruminate on the text — repeat it mentally), Oratio (respond in personal prayer from the heart), Contemplatio (rest in God's presence beyond words and concepts — pure being).","goal":"Encounter with the living God through prayerful engagement with Scripture.","keyText":"Rule of Saint Benedict, Ladder of Monks (Guigo II)","keyWords":"Lectio · Meditatio · Oratio · Contemplatio · Scripture · Silence"},{"id":15,"era":"Medieval (700–1000 CE)","eraColor":"#8e44ad","symbol":"🌀","name":"Chan / Zen Meditation","origin":"China (later Japan, Korea, Vietnam)","year":"c. 500–1000 CE","teacher":"Bodhidharma, Huineng, Dogen, Rinzai Gigen","technique":"Zazen — sitting upright, alert, not grasping or rejecting anything that arises. Koan practice — contemplating paradoxical questions that shatter conceptual mind (e.g., 'What is the sound of one hand clapping? What was your face before your parents were born?'). Shikantaza — just sitting.","goal":"Kensho/Satori — direct insight into one's true nature (Buddha-nature).","keyText":"Platform Sutra, Blue Cliff Record, Gateless Gate","keyWords":"Zazen · Koan · Shikantaza · Satori · Kensho · Just Sitting"},{"id":16,"era":"Medieval (700–1000 CE)","eraColor":"#8e44ad","symbol":"💎","name":"Tibetan Buddhist / Vajrayana","origin":"Tibet (from Indian Tantra)","year":"c. 700–1000 CE","teacher":"Guru Rinpoche (Padmasambhava), Marpa, Milarepa","technique":"Ngondro (100,000 prostrations, mantras, mandala offerings). Deity Yoga — vivid visualization of oneself as a divine being. Mantra recitation. Dzogchen — direct recognition of Rigpa (pure awareness). Mahamudra — recognizing luminous empty nature of mind. Six Yogas of Naropa (Tummo, Dream Yoga, etc.)","goal":"Full Buddhahood in one lifetime through the swift path of tantra.","keyText":"Tibetan Book of the Dead, Guhyasamaja Tantra","keyWords":"Ngondro · Deity Yoga · Dzogchen · Rigpa · Tummo · Mahamudra"},{"id":17,"era":"Medieval (700–1000 CE)","eraColor":"#8e44ad","symbol":"🌙","name":"Sufi Meditation / Muraqaba & Dhikr","origin":"Islamic mysticism — Middle East, Persia","year":"c. 700–1200 CE","teacher":"Rumi, Al-Hallaj, Al-Ghazali, Ibn Arabi","technique":"Muraqaba: sit in stillness, focus on the heart, maintain awareness of God's presence. Dhikr: repetitive chanting of divine names ('Allahu Akbar', 'La ilaha illa Allah'). Sama: whirling (Mevlevi Dervishes) — spinning in meditative ecstasy to sacred music.","goal":"Fana fi Allah — annihilation of the ego in God; union with the Divine Beloved.","keyText":"Masnavi (Rumi), Ihya Ulum al-Din (Al-Ghazali)","keyWords":"Muraqaba · Dhikr · Fana · Sama · Whirling · Divine Love"},{"id":18,"era":"Medieval (800–1200 CE)","eraColor":"#8e44ad","symbol":"🔺","name":"Kashmiri Shaivism / Trika Meditation","origin":"Kashmir, India","year":"c. 800–1200 CE","teacher":"Abhinavagupta, Utpaladeva, Kshemaraja","technique":"Pratyabhijna ('Recognition') — recognizing one's true nature as Shiva/pure consciousness directly. Spanda meditation — meditating on the vibration/pulse of awareness beneath all experience. No gradual path — direct recognition through Shaktipat (transmission from teacher).","goal":"Recognition that you ARE divine consciousness already — instantaneous liberation.","keyText":"Shiva Sutras, Spanda Karikas, Pratyabhijna Hridayam, Tantraloka","keyWords":"Pratyabhijna · Spanda · Shiva · Shaktipat · Trika · Recognition"},{"id":19,"era":"Medieval (1200 CE)","eraColor":"#2980b9","symbol":"✡️","name":"Jewish / Kabbalistic Meditation","origin":"Jewish mystical tradition, Middle East/Europe","year":"c. 1200 CE (older roots)","teacher":"Rabbi Nachman of Breslov, Baal Shem Tov, Maimonides","technique":"Hitbonenut: deep contemplation of Kabbalistic concepts. Hitbodedut: speak to God in your own language, from your heart, daily (Breslov method). Merkabah: visualization of divine chariot/palaces. Gematria: meditation on Hebrew letters and their mystical meanings.","goal":"Cleaving to God (Devekut); direct mystical experience; transformation of character.","keyText":"Zohar, Sefer Yetzirah, Tanya (Chabad)","keyWords":"Hitbonenut · Hitbodedut · Kabbalah · Sefirot · Devekut · Ein Sof"},{"id":20,"era":"Medieval (500–1200 CE)","eraColor":"#d35400","symbol":"🌺","name":"Bhakti Yoga / Devotional Meditation","origin":"India","year":"c. 500–1200 CE","teacher":"Mirabai, Tukaram, Ramanuja, Chaitanya","technique":"Nama Japa — chanting the divine name (Ram, Krishna, Om Namah Shivaya) with full love and feeling. Kirtan — communal devotional singing. Puja with Dhyana — ritual worship combined with visualizing the deity in the heart lotus. Complete surrender of self to God.","goal":"Bhava Samadhi — ecstatic absorption in divine love; Prema (pure divine love).","keyText":"Narada Bhakti Sutras, Bhagavata Purana","keyWords":"Bhakti · Nama Japa · Kirtan · Surrender · Prema · Divine Love"},{"id":21,"era":"Early Modern (1500 CE)","eraColor":"#16a085","symbol":"🌊","name":"Sikh Meditation / Nam Simran","origin":"Punjab, India","year":"c. 1500 CE","teacher":"Guru Nanak Dev Ji, ten Sikh Gurus","technique":"Nam Simran: constant meditative remembrance of God's name (Waheguru). Silent repetition of 'Waheguru' or the Mool Mantar. Nitnem: daily recitation of set prayers at dawn, evening, and night. Kirtan: devotional singing of Gurbani (scripture) in an absorbed, meditative state.","goal":"Mukti (liberation) through merging with Waheguru — the divine name permeating all creation.","keyText":"Guru Granth Sahib (primary scripture)","keyWords":"Waheguru · Nam Simran · Mool Mantar · Kirtan · Mukti · Gurbani"},{"id":22,"era":"Early Modern (1375 CE)","eraColor":"#2980b9","symbol":"☁️","name":"Cloud of Unknowing / Apophatic","origin":"English Christian mysticism","year":"c. 1375 CE","teacher":"Anonymous English mystic","technique":"Surrender all concepts of God — even beautiful ones — and rest in pure unknowing love. Place a 'cloud of forgetting' below (blocking memories/thoughts) and a 'cloud of unknowing' above (between you and God). One word of love pierces the cloud. Naked intent toward God.","goal":"Union with God through love that transcends all intellectual understanding.","keyText":"The Cloud of Unknowing (anonymous, 14th century)","keyWords":"Unknowing · Apophatic · Naked Intent · Love · Cloud · Contemplation"},{"id":23,"era":"Early Modern (c. 1500)","eraColor":"#2980b9","symbol":"🎭","name":"Ignatian Contemplation","origin":"Spain / Catholic tradition","year":"c. 1521–1548 CE","teacher":"St. Ignatius of Loyola","technique":"Imaginative prayer — vividly enter Gospel scenes using all five senses. Place yourself in the scene. See the colors, smell the air, hear the voices, feel the ground. Engage emotionally with Christ. Ask: what does this stir in me? Where is God moving? Consolation vs. Desolation discernment.","goal":"Intimate relationship with God; discernment of God's will; integration of faith into daily life.","keyText":"Spiritual Exercises of St. Ignatius","keyWords":"Imagination · Contemplation · Senses · Gospel · Consolation · Discernment"},{"id":24,"era":"Early Modern (1700s)","eraColor":"#8e44ad","symbol":"🎯","name":"Rinzai Zen Koan System","origin":"Japan","year":"c. 1700s (formalized by Hakuin)","teacher":"Hakuin Ekaku (1686–1769)","technique":"Work through hundreds of koans in a systematic curriculum with a Zen master (Roshi). Classic first koan: 'Mu' — sit with it not thinking ABOUT it but BECOMING it, until conceptual mind exhausts itself and direct insight (Kensho) breaks through. Private interviews (Dokusan) with master.","goal":"Kensho — direct breakthrough into Buddha-nature; progressive deepening through koan curriculum.","keyText":"Gateless Gate (Mumonkan), Blue Cliff Record (Hekiganroku)","keyWords":"Mu · Koan · Kensho · Dokusan · Hakuin · Breakthrough"},{"id":25,"era":"Early Modern (1800s)","eraColor":"#27ae60","symbol":"📿","name":"Burmese Vipassana Revival","origin":"Myanmar (Burma)","year":"c. 1800s–1900s","teacher":"Ledi Sayadaw (1846–1923), Mahasi Sayadaw, S.N. Goenka","technique":"Ledi Sayadaw democratized Vipassana for laypeople (not just monks). Noting method (Mahasi): mentally note each experience — 'rising, falling, sitting, touching, thinking, hearing' — to cultivate precise awareness. Goenka's 10-day silent retreat format: scan body systematically for sensations.","goal":"Preserve the Buddha's meditation method; make liberation accessible to all people worldwide.","keyText":"Mahasi Sayadaw: Practical Insight Meditation","keyWords":"Noting · Rising-Falling · Body Scan · Lay Practice · 10-Day Retreat"},{"id":26,"era":"Early Modern (1900 CE)","eraColor":"#d35400","symbol":"❓","name":"Ramana Maharshi's Self-Inquiry / Atma Vichara","origin":"India (Tiruvannamalai, Tamil Nadu)","year":"c. 1900–1950","teacher":"Ramana Maharshi (1879–1950)","technique":"Continuously ask 'Who am I?' — not philosophically but as direct investigation into the sense of 'I'. Notice the sense of 'I am' — the feeling of being, of existing. Turn attention toward its source: 'Where does this I arise from?' When thoughts arise: 'To whom does this arise? To me. Who am I?' Stay with this. The I-thought dissolves into pure awareness.","goal":"Abidance in the Self — recognition that you are pure, unchanging, thought-free awareness itself.","keyText":"Who Am I? (Nan Yar), Talks with Sri Ramana Maharshi","keyWords":"Who Am I · Self-Inquiry · I-Thought · Atman · Awareness · Self-Abidance"},{"id":27,"era":"Modern (1929)","eraColor":"#1abc9c","symbol":"💪","name":"Progressive Muscle Relaxation (PMR)","origin":"USA","year":"1929","teacher":"Edmund Jacobson","technique":"Systematically tense each muscle group for 5–10 seconds, then completely release for 20–30 seconds. Notice the contrast between tension and relaxation. Progress from feet upward to head. Teaches the body to recognize and consciously release held tension. No mental focus required.","goal":"Deep physical relaxation; reduction of anxiety, insomnia, and psychosomatic stress.","keyText":"Progressive Relaxation (Jacobson, 1929)","keyWords":"Muscle Groups · Tension-Release · Contrast · Relaxation · Anxiety · Body Awareness"},{"id":28,"era":"Modern (1932)","eraColor":"#1abc9c","symbol":"🌡️","name":"Autogenic Training","origin":"Germany","year":"1932","teacher":"Johannes Heinrich Schultz","technique":"Six auto-suggestion formulas repeated mentally: (1) My arm is heavy (2) My arm is warm (3) My heartbeat is calm and regular (4) My breathing is calm (5) My solar plexus is warm (6) My forehead is cool. Each practiced for weeks before adding the next. Creates real physiological changes.","goal":"Activate parasympathetic nervous system; treat psychosomatic illness, anxiety, insomnia, hypertension.","keyText":"Autogenic Training (Schultz, 1932)","keyWords":"Auto-Suggestion · Heaviness · Warmth · Calm Heart · Parasympathetic · Self-Regulation"},{"id":29,"era":"Modern (1950s)","eraColor":"#1abc9c","symbol":"🕉️","name":"Transcendental Meditation (TM)","origin":"India / Global","year":"1955–1960s","teacher":"Maharishi Mahesh Yogi (1918–2008)","technique":"Effortless mantra meditation using a personally assigned Sanskrit mantra (a meaningless sound-vibration). Unlike concentration, TM involves allowing the mantra to become quieter and subtler. The mind naturally settles to pure awareness (Turiya). 20 minutes twice daily, eyes closed, sitting comfortably.","goal":"Transcending thought to pure awareness (Turiya); reducing stress; enlightenment over time.","keyText":"Science of Being and Art of Living (Maharishi)","keyWords":"Mantra · Transcendence · Turiya · Effortless · Pure Awareness · Twice Daily"},{"id":30,"era":"Modern (1969)","eraColor":"#1abc9c","symbol":"⚡","name":"Kundalini Yoga Meditation","origin":"India / USA (popularized by Yogi Bhajan)","year":"1969","teacher":"Yogi Bhajan (1929–2004)","technique":"Specific sequences (kriyas) combining: Breath of Fire (rapid diaphragmatic breathing), Mudras (hand gestures), Bandhas (body locks: root, navel, throat), Mantras (Sat Nam, Wahe Guru), dynamic movement, drishti (gaze points), and visualization. Extremely activating and energizing practices.","goal":"Awaken Kundalini Shakti, raise energy through all chakras to the crown; expanded consciousness.","keyText":"Kundalini Research Institute publications","keyWords":"Kundalini · Shakti · Kriya · Breath of Fire · Bandha · Chakras · Sat Nam"},{"id":31,"era":"Modern (1970s)","eraColor":"#1abc9c","symbol":"💃","name":"Dynamic Meditation (Osho)","origin":"India / Global","year":"1970s","teacher":"Osho (Bhagwan Shree Rajneesh, 1931–1990)","technique":"5 stages (60 min): (1) Chaotic breathing through nose, 10 min; (2) Total catharsis — scream, cry, jump, shake — complete let-go, 10 min; (3) Jump with 'HOO! HOO!' shouted at ground, 10 min; (4) STOP — freeze in whatever position — witness without moving, 15 min; (5) Celebration — free joyful dancing, 15 min.","goal":"Clear accumulated emotional tension and repression; create inner stillness through active catharsis first.","keyText":"Osho: Meditation: The First and Last Freedom","keyWords":"Catharsis · Freeze · Witnessing · Active Meditation · HOO · Dynamic"},{"id":32,"era":"Modern (1970s)","eraColor":"#1abc9c","symbol":"🌊","name":"Holotropic Breathwork","origin":"USA","year":"1970s","teacher":"Stanislav Grof, Christina Grof","technique":"In groups: lie down, breathe rapidly and deeply for 2–3 hours to music chosen to support the journey. Induced hyperventilation creates non-ordinary states — accessing biographical, perinatal (birth), and transpersonal material. A trained 'sitter' watches over. Integration through mandala drawing afterward.","goal":"Access and heal deep biographical trauma, perinatal material, and transpersonal/mystical states.","keyText":"The Adventure of Self-Discovery (Grof)","keyWords":"Hyperventilation · Non-ordinary States · Transpersonal · Perinatal · Music · Healing"},{"id":33,"era":"Modern (1978)","eraColor":"#1abc9c","symbol":"🫀","name":"Focusing (Eugene Gendlin)","origin":"USA — University of Chicago","year":"1978","teacher":"Eugene Gendlin","technique":"Attend to the 'felt sense' — a pre-verbal, bodily knowing of a situation held in the body. Steps: Clear a space → feel what's there → get a felt sense → find a handle (word/image) → resonate back and forth → ask → receive. Stay with the felt sense until it 'shifts' and releases.","goal":"Access bodily wisdom; resolve stuck emotional and psychological patterns through somatic insight.","keyText":"Focusing (Gendlin, 1978)","keyWords":"Felt Sense · Bodily Knowing · Shift · Pre-verbal · Inner Knowing · Somatic"},{"id":34,"era":"Modern (1979)","eraColor":"#16a085","symbol":"🧠","name":"MBSR — Mindfulness-Based Stress Reduction","origin":"USA — UMass Medical School","year":"1979","teacher":"Jon Kabat-Zinn","technique":"8-week secular program: Body Scan (systematic attention from feet to head), Sitting Meditation (mindfulness of breath, sounds, sensations, thoughts, awareness itself), Mindful Yoga, Walking Meditation. 9 attitudes: non-judging, patience, beginner's mind, trust, non-striving, acceptance, letting go, gratitude, generosity.","goal":"Reduce chronic stress, anxiety, pain; develop moment-to-moment non-judgmental awareness.","keyText":"Full Catastrophe Living (Kabat-Zinn, 1990)","keyWords":"Body Scan · Non-Judging · Present Moment · 8 Weeks · Secular · Non-Striving"},{"id":35,"era":"Modern (1980s–90s)","eraColor":"#16a085","symbol":"💙","name":"Centering Prayer","origin":"Christian contemplative — USA","year":"1970s–1980s revival","teacher":"Fr. Thomas Keating, Fr. William Meninger, Fr. Basil Pennington","technique":"4 guidelines: (1) Choose a sacred word as symbol of consent to God's presence; (2) Sit, close eyes, introduce sacred word; (3) When thoughts arise, gently return to sacred word; (4) At end, remain in silence for 2 minutes. 20 minutes twice daily. Let God be God — release all control.","goal":"Deepening intimacy with God through receptive, beyond-concept, consent-based awareness.","keyText":"Open Mind, Open Heart (Keating), Cloud of Unknowing","keyWords":"Sacred Word · Consent · Beyond Concepts · God · Contemplative · Receptivity"},{"id":36,"era":"Modern (1990s)","eraColor":"#16a085","symbol":"❤️","name":"HeartMath / Cardiac Coherence","origin":"USA — HeartMath Institute","year":"1991","teacher":"Doc Childre, Rollin McCraty","technique":"Quick Coherence: (1) Focus attention on heart area; (2) Breathe slowly through the heart (5 sec in, 5 sec out); (3) Activate a genuine feeling of appreciation, care, or love. Measured by HRV (Heart Rate Variability). Creates smooth, sine-wave HRV pattern = 'coherence' state.","goal":"Psychophysiological coherence — synchronizing heart, brain, and nervous system for optimal functioning.","keyText":"The HeartMath Solution (Childre & Martin)","keyWords":"HRV · Cardiac Coherence · Appreciation · Heart Focus · Sine Wave · Coherence"},{"id":37,"era":"Modern (1990s)","eraColor":"#16a085","symbol":"🌿","name":"MBCT — Mindfulness-Based Cognitive Therapy","origin":"UK / Canada","year":"1992–2000","teacher":"Zindel Segal, Mark Williams, John Teasdale","technique":"Combines MBSR mindfulness with CBT. Teaches participants to recognize and dis-identify from depressive thought patterns. Key practice: watch thoughts as 'mental events' not facts ('I am having the thought that I am worthless' — not 'I am worthless'). Decentering from automatic thoughts.","goal":"Prevent relapse in recurrent depression; clinically proven to reduce relapse by 50%.","keyText":"Mindfulness-Based Cognitive Therapy for Depression (Segal, Williams, Teasdale)","keyWords":"Depression Relapse · Decentering · Thoughts as Events · CBT · 8 Weeks · NHS Recommended"},{"id":38,"era":"Modern (1990s)","eraColor":"#16a085","symbol":"🌱","name":"ACT Mindfulness (Acceptance & Commitment)","origin":"USA","year":"1986–1990s","teacher":"Steven Hayes","technique":"Core mindfulness moves: Defusion (watching thoughts as just thoughts: 'I notice I'm having the thought that...'), Acceptance (opening to difficult feelings without struggling), Present-moment contact (full awareness of here and now), Self-as-context (identifying as the Observer of experience, not its content).","goal":"Psychological flexibility — accept inner experience while committing to values-based action in the world.","keyText":"Get Out of Your Mind and Into Your Life (Hayes)","keyWords":"Defusion · Acceptance · Present Moment · Observer Self · Values · Psychological Flexibility"},{"id":39,"era":"Modern (1990s)","eraColor":"#16a085","symbol":"🎭","name":"DBT Mindfulness Skills","origin":"USA","year":"1993","teacher":"Marsha Linehan","technique":"What skills: Observe (notice without labeling), Describe (put words on experience), Participate (fully enter the activity). How skills: Non-judgmentally (without good/bad labels), One-mindfully (one thing at a time), Effectively (do what works). Wise Mind = integration of Emotion Mind and Reasonable Mind.","goal":"Emotional regulation; reduce suffering in borderline personality disorder and other intense emotional states.","keyText":"DBT Skills Training Manual (Linehan)","keyWords":"Wise Mind · Observe · Describe · Non-Judgmental · One-Mindfully · Effective"},{"id":40,"era":"Modern (1990s)","eraColor":"#d35400","symbol":"🕉️","name":"Kriya Yoga","origin":"India / Global","year":"c. ancient; modern revival 1861","teacher":"Mahavatar Babaji → Lahiri Mahasaya → Sri Yukteswar → Paramahansa Yogananda","technique":"Specific pranayama technique circulating prana up and down the spine through six chakras, combined with mental focus, mantra, and mudras. Said to accelerate spiritual evolution. One Kriya = one year of natural evolution. Practiced in graduated initiations. Deep interiorization of the mind.","goal":"Rapid spiritual evolution; union with God (Cosmic Consciousness); liberation in one lifetime.","keyText":"Autobiography of a Yogi (Yogananda)","keyWords":"Kriya · Pranayama · Spinal Breathing · Chakras · Cosmic Consciousness · Initiation"},{"id":41,"era":"Modern (1962)","eraColor":"#d35400","symbol":"🌙","name":"Yoga Nidra / NSDR","origin":"India / Global","year":"c. ancient; systematized 1962","teacher":"Swami Satyananda Saraswati, Andrew Huberman (NSDR term)","technique":"8 stages lying in Savasana: (1) Physical relaxation; (2) Sankalpa (plant your resolve); (3) Rotation of consciousness through 61 body points; (4) Breath awareness and counting; (5) Pairs of opposites (heavy/light, hot/cold); (6) Rapid visualization sequence (60 images); (7) Repeat Sankalpa; (8) Return to waking. Maintain consciousness while body sleeps.","goal":"Conscious deep rest in the hypnagogic state; healing, creativity, subconscious reprogramming.","keyText":"Yoga Nidra (Swami Satyananda Saraswati)","keyWords":"Hypnagogic · Body Rotation · Sankalpa · NSDR · 61 Points · Sleep Border"},{"id":42,"era":"Modern (1960s)","eraColor":"#d35400","symbol":"🔆","name":"Chakra Meditation","origin":"Tantric Yoga / India","year":"c. 1577 CE text; modern 1960s+","teacher":"Various Tantric and Yogic teachers","technique":"Direct awareness through 7 chakras: Muladhara (root/LAM), Svadhisthana (sacral/VAM), Manipura (solar/RAM), Anahata (heart/YAM), Vishuddha (throat/HAM), Ajna (third eye/OM), Sahasrara (crown/silence). Visualize color and lotus at each center. Chant bija mantra. Feel qualities opening.","goal":"Balance and activate all chakras; raise Kundalini from base to crown; holistic healing.","keyText":"Sat-Cakra-Nirupana (1577), Serpent Power (Arthur Avalon/Woodroffe)","keyWords":"Chakras · Kundalini · Bija Mantra · Lotus · LAM VAM RAM YAM HAM OM · Energy Centers"},{"id":43,"era":"Ancient-Modern","eraColor":"#8e44ad","symbol":"🔮","name":"Dzogchen — Great Perfection","origin":"Tibet / Bon tradition","year":"c. 800 CE (older in Bon)","teacher":"Guru Rinpoche, Longchenpa, Nyoshul Khen Rinpoche, Sogyal Rinpoche","technique":"A master 'points out' the nature of mind directly. Practice = recognizing and resting in Rigpa (pure, naked, luminous awareness) without modification. Two main practices: Trekcho (Cutting Through — relaxing into the natural state, like releasing a held fist) and Togal (Direct Crossing — vision practices using light and space).","goal":"Liberation through direct recognition of Rigpa — the already-perfect nature of mind — without gradual cultivation.","keyText":"Longchenpa's Seven Treasuries, Sogyal Rinpoche: Tibetan Book of Living and Dying","keyWords":"Rigpa · Pointing Out · Trekcho · Togal · Great Perfection · Natural State"},{"id":44,"era":"Ancient-Modern","eraColor":"#8e44ad","symbol":"🌊","name":"Mahamudra — Great Seal","origin":"India / Tibet","year":"c. 1000 CE (Kagyu lineage)","teacher":"Tilopa, Naropa, Marpa, Milarepa, Gampopa","technique":"Four Yogas: One-Pointedness (steady concentration on breath or mind itself), Simplicity (recognizing the simple, unelaborated nature of mind — empty yet aware), One-Taste (all experience has the same empty, luminous taste), Non-Meditation (no longer any separate meditator or act of meditating — just being). Resting in the nature of mind as is.","goal":"Recognition and stabilization of the luminous, empty nature of mind — union of clarity and emptiness.","keyText":"Mahamudra: The Quintessence of Mind and Meditation (Takpo Tashi Namgyal)","keyWords":"Four Yogas · One-Taste · Non-Meditation · Luminous Emptiness · Kagyu · Tilopa"},{"id":45,"era":"Ancient-Modern","eraColor":"#d35400","symbol":"🌀","name":"Qigong Meditation","origin":"China (Taoist and TCM tradition)","year":"c. 2000 BCE roots; formalized ~500 BCE","teacher":"Various Taoist and medical masters","technique":"Still Qigong: Zhan Zhuang (Standing Like a Tree) — stand motionless with arms raised for extended periods. Moving Qigong: Ba Duan Jin, Yi Jin Jing, Five Animal Frolics — slow flowing movements synchronized with breath. Mind (Yi) directs Qi through meridians. Medical Qigong for specific organs.","goal":"Balance yin/yang, open energy meridians, cultivate health, longevity, and spiritual development.","keyText":"Classic of Internal Medicine (Huangdi Neijing)","keyWords":"Qi · Zhan Zhuang · Yi · Meridians · TCM · Ba Duan Jin · Standing Meditation"},{"id":46,"era":"Ancient-Modern","eraColor":"#d35400","symbol":"🥋","name":"Tai Chi as Moving Meditation","origin":"China","year":"c. 1600s (Chen family lineage)","teacher":"Chen Wangting, Yang Luchan, Yang Chengfu","technique":"Slow, deliberate, continuous sequences of postures (forms) with mind fully present in every movement. Yi (mental intention) directs Qi through body. Movements are circular, rooted, flowing. Mind leads Qi; Qi leads body. Practice cultivates Song (relaxed sinking), Ting Jin (listening energy), and Zhong Ding (central equilibrium).","goal":"Moving samadhi; martial mastery; health and longevity; harmonizing internal energy.","keyText":"Tai Chi Classics (Zhang Sanfeng, attributed)","keyWords":"Yi · Qi · Song · Forms · Moving Meditation · Balance · Chen Yang Wu Sun Hao"},{"id":47,"era":"Classical (Hatha Yoga)","eraColor":"#d35400","symbol":"🕯️","name":"Trataka — Candle Gazing","origin":"India (Hatha Yoga tradition)","year":"c. 1500 CE (Hatha Yoga Pradipika)","teacher":"Swatmarama (author of Hatha Yoga Pradipika)","technique":"Fix a steady, unblinking gaze at a candle flame at eye level, 1–2 feet away. Maintain gaze until eyes water. Close eyes and visualize the after-image at the Ajna chakra (brow center). Reopen when image fades. Repeat. Advanced: gaze at a black dot, crystal, moon, rising sun, or yantra.","goal":"Develop one-pointed concentration (Dharana); activate the third eye (Ajna chakra); purify vision.","keyText":"Hatha Yoga Pradipika (Chapter 2)","keyWords":"Trataka · Flame · Unblinking · Ajna · Third Eye · Concentration · Yantra"},{"id":48,"era":"Ancient-Modern","eraColor":"#8e44ad","symbol":"🔔","name":"Nada Yoga / Sound Bath Meditation","origin":"India / Global","year":"c. ancient; modern sound bath 20th century","teacher":"Swami Nada Brahmananda; various","technique":"Nada Yoga: attend to internal sound (Anahata Nada — the unstruck, inner sound of pure consciousness). Progress through grosser to subtler inner sounds. Sound Bath: passive immersion in Tibetan bowls, crystal bowls, gongs, tuning forks while lying in Savasana. Binaural beats: different frequencies in each ear create brain entrainment.","goal":"Merge consciousness with the source of all sound; deep theta/delta brainwave states; healing.","keyText":"Hatha Yoga Pradipika (Chapter 4 on Nada), ancient Vedic texts","keyWords":"Nada · Inner Sound · Anahata · Singing Bowls · Binaural · Gong · Sound Healing"},{"id":49,"era":"Modern (2000s)","eraColor":"#16a085","symbol":"✨","name":"Nondual / Open Awareness Meditation","origin":"Global (Advaita, Dzogchen, modern teachers)","year":"Late 20th–21st century","teacher":"Adyashanti, Rupert Spira, Francis Lucille, Jean Klein, Tony Parsons","technique":"Rest as awareness itself — not as something awareness sees, but as that which is aware. Notice: What is aware right now? Can awareness be absent? Allow everything to arise and pass within open, spacious awareness without preference or rejection. Key inquiry: 'Who or what is aware right now?' No technique — simply being what you already are.","goal":"Direct recognition of pure awareness as your fundamental nature — the end of seeking.","keyText":"Being Aware of Being Aware (Rupert Spira), The Way of Liberation (Adyashanti)","keyWords":"Open Awareness · Awareness Itself · Non-Dual · Rupert Spira · Self-Recognition · No-Technique"},{"id":50,"era":"Modern (2010s)","eraColor":"#1abc9c","symbol":"📱","name":"App-Based Mindfulness","origin":"Global (Silicon Valley + contemplative traditions)","year":"2012–present","teacher":"Andy Puddicombe (Headspace), Tara Brach (Insight Timer), Sam Harris (Waking Up)","technique":"Guided meditation via apps: Headspace, Calm, Insight Timer, Waking Up, Ten Percent Happier. Body scans, breath awareness, loving-kindness, sleep meditations, SOS sessions for acute anxiety, movement. Science explanations embedded. Neurofeedback via Muse EEG headband giving real-time brainwave audio feedback.","goal":"Make meditation accessible to hundreds of millions; reduce stress, improve sleep and focus.","keyText":"App ecosystems; Sam Harris: Waking Up; Dan Harris: 10% Happier","keyWords":"Headspace · Calm · Insight Timer · Waking Up · EEG · Neurofeedback · Digital Mindfulness"},{"id":51,"era":"Modern (1995)","eraColor":"#1abc9c","symbol":"😂","name":"Laughter Yoga / Laughter Meditation","origin":"India / Global","year":"1995","teacher":"Dr. Madan Kataria (Mumbai)","technique":"In a group circle: playful laughter exercises using eye contact and childlike playfulness to trigger real laughter. Alternated with pranayama breathing exercises. Sustained laughter produces genuine neurochemical release. The body cannot distinguish fake from real laughter — same benefits. Ho-Ho-Ha-Ha exercises. 16,000+ laughter clubs in 110+ countries.","goal":"Release endorphins, reduce cortisol, boost immunity, elevate mood through unconditional laughter.","keyText":"Laugh for No Reason (Dr. Madan Kataria)","keyWords":"Laughter · Ho-Ho-Ha-Ha · Endorphins · Unconditional · Playfulness · Present Moment"},{"id":52,"era":"Modern (1970s)","eraColor":"#1abc9c","symbol":"🌿","name":"Nature-Based / Shinrin-Yoku (Forest Bathing)","origin":"Japan (Shinrin-yoku coined 1982); global indigenous traditions","year":"1982 (Japan), prehistoric (indigenous)","teacher":"Dr. Qing Li (modern research); indigenous traditions worldwide","technique":"Slow, mindful walk through a forest, engaging all senses fully. Smell the phytoncides (chemicals released by trees). See the dappled light. Hear the birds and wind. Touch bark. No destination — simply BE in the forest. Also: Earth meditation (bare feet on ground), Sky gazing (Dzogchen), Fire gazing, Water watching.","goal":"Reconnect with nature; reduce cortisol; boost NK immune cells; restore attention and wellbeing.","keyText":"Forest Bathing (Dr. Qing Li, 2018)","keyWords":"Shinrin-Yoku · Phytoncides · Senses · Forest · Earth · Grounding · Nature Connection"},{"id":53,"era":"Ancient-Modern","eraColor":"#8e44ad","symbol":"🌐","name":"Taoist Inner Alchemy / Neidan","origin":"China (Taoist tradition)","year":"c. 700–1000 CE (fully developed)","teacher":"Various Taoist masters; Wei Boyang","technique":"Microcosmic Orbit: circulate Qi up the spine (Du Mai/Governor Vessel) and down the front (Ren Mai/Conception Vessel) in a continuous loop. Three Dantian cultivation: lower (Jing/essence, below navel), middle (Qi/heart-mind, chest), upper (Shen/spirit, head). Refine Jing → Qi → Shen → Xu → Tao.","goal":"Physical immortality and spiritual liberation through energetic refinement of body-mind-spirit.","keyText":"The Secret of the Golden Flower, Cantong Qi (Wei Boyang)","keyWords":"Microcosmic Orbit · Dantian · Jing Qi Shen · Alchemy · Du Mai · Ren Mai"},{"id":54,"era":"Modern (2000s)","eraColor":"#16a085","symbol":"🌸","name":"Self-Compassion Practice (MSC)","origin":"USA","year":"2010","teacher":"Kristin Neff (researcher), Christopher Germer (therapist)","technique":"Self-Compassion Break: (1) 'This is a moment of suffering' — mindfulness of pain; (2) 'Suffering is a part of life' — common humanity; (3) Hand on heart: 'May I give myself the compassion I need' — self-kindness. Loving-kindness phrases directed toward the self. Compassionate body scan. Fierce self-compassion for boundary-setting.","goal":"Reduce self-criticism and shame; increase emotional resilience, motivation, and life satisfaction.","keyText":"Self-Compassion: The Proven Power of Being Kind to Yourself (Neff, 2011)","keyWords":"Self-Kindness · Common Humanity · Mindfulness · MSC · Shame · Self-Criticism · Resilience"},{"id":55,"era":"Modern (2000s)","eraColor":"#16a085","symbol":"💚","name":"Compassion-Focused / CCT & CBCT","origin":"USA — Stanford & Emory Universities","year":"2009–2012","teacher":"Thupten Jinpa (CCT/Stanford), Geshe Lobsang Tenzin Negi (CBCT/Emory)","technique":"CCT (8 weeks): Mindfulness, loving-kindness, compassion for self, compassion for all. CBCT: Analytical meditation on interdependence, developing compassion systematically using Lojong (mind training) logic. Both secular and based on Tibetan compassion training adapted for Western science context.","goal":"Reduce burnout, increase empathy, reduce depressive symptoms, increase prosocial behavior.","keyText":"The Compassionate Life (Thupten Jinpa)","keyWords":"Compassion · CCT · CBCT · Lojong · Interdependence · Prosocial · Empathy"},{"id":56,"era":"Ancient-Modern","eraColor":"#d35400","symbol":"🪷","name":"Tonglen — Sending and Receiving","origin":"Tibet (Lojong — mind training tradition)","year":"c. 1000 CE","teacher":"Atisha, Geshe Chekhawa, Pema Chödrön (modern popularizer)","technique":"Breathe IN the suffering of others (visualized as dark, hot, heavy smoke). Breathe OUT happiness, relief, and light (white, cool, spacious). Start with yourself. Expand to loved ones, neutral people, difficult people, all beings. Radically reverses the habitual self-cherishing mind. Can be done at any moment of witness to suffering.","goal":"Dissolve self-cherishing; generate radical compassion; transform adverse circumstances into awakening.","keyText":"Start Where You Are (Pema Chödrön), Training the Mind (Chogyam Trungpa)","keyWords":"Tonglen · Sending · Receiving · Lojong · Self-Cherishing · Dark Smoke · White Light"},{"id":57,"era":"Ancient-Modern","eraColor":"#8e44ad","symbol":"🚶","name":"Walking Meditation (Cross-Tradition)","origin":"Multiple traditions worldwide","year":"c. 500 BCE onward","teacher":"The Buddha, Thich Nhat Hanh, Dogen","technique":"Kinhin (Zen): very slow, each step synchronized with breath. Cankama (Theravada): back and forth on a set path, noting each component of the step (lifting, moving, placing, touching, pressing). Mindful Walking (MBSR): slow ordinary walking with full awareness of each sensation. Labyrinth walking (Christian): spiral path as inner journey.","goal":"Extend meditative awareness into movement; presence in every step; unify stillness and action.","keyText":"The Long Road Turns to Joy (Thich Nhat Hanh)","keyWords":"Kinhin · Cankama · Labyrinth · Step · Presence · Slow · Movement Meditation"},{"id":58,"era":"Modern (1970s)","eraColor":"#1abc9c","symbol":"💨","name":"Breathwork Meditation (Modern Methods)","origin":"Global","year":"1970s–present","teacher":"Stanislav Grof (Holotropic), Wim Hof, Dr. Andrew Weil (4-7-8)","technique":"Wim Hof: 30 power breaths → breath retention → recovery breath → 3 rounds. Box Breathing: 4 counts in, hold 4, out 4, hold 4. 4-7-8: inhale 4, hold 7, exhale 8. Coherent Breathing: 5 seconds in, 5 out continuously. Resonance breathing maximizes HRV. Each pattern creates distinct physiological and mental effects.","goal":"Nervous system regulation; immune modulation; stress relief; altered states; peak performance.","keyText":"The Wim Hof Method, Dr. Weil's breathing programs","keyWords":"Wim Hof · Box Breathing · 4-7-8 · Coherent Breathing · HRV · Pranayama · Breath Retention"},{"id":59,"era":"Modern (2020s)","eraColor":"#16a085","symbol":"🍄","name":"Psychedelic-Assisted Meditation","origin":"Global (Johns Hopkins, Imperial College, NYU)","year":"2020s (modern revival; ancient shamanic roots)","teacher":"Roland Griffiths, Robin Carhart-Harris, Rick Doblin","technique":"Psilocybin or MDMA administered in a clinical/therapeutic setting with preparation and integration. The psychedelic suppresses the default mode network — producing ego dissolution, oceanic boundlessness, sense of unity, and nondual awareness. Integrated through contemplative practice before and after. Meditation enhances and structures the experience.","goal":"Profound and lasting shifts in consciousness — treating depression, PTSD, addiction, end-of-life anxiety.","keyText":"How to Change Your Mind (Michael Pollan), Johns Hopkins research papers","keyWords":"Psilocybin · MDMA · Ego Dissolution · Default Mode Network · Integration · Mystical Experience"},{"id":60,"era":"Indigenous (Prehistoric–Present)","eraColor":"#7f8c8d","symbol":"🪘","name":"Indigenous & Shamanic Meditation","origin":"Worldwide (prehistoric to present)","year":"Prehistoric — ongoing","teacher":"Aboriginal Elders, Native American tradition keepers, Andean curanderos","technique":"Aboriginal Dadirri (deep listening — patient, receptive inner stillness in nature), Native American Vision Quest (4 days alone in nature without food), Andean Despacho ceremony, Shamanic drumming journeys (4–7 beats/sec inducing theta brainwaves), Hawaiian Ho'oponopono ('I love you, I'm sorry, please forgive me, thank you'), African Ubuntu contemplation.","goal":"Harmony with nature, healing, spiritual guidance, community, and transmission of ancestral wisdom.","keyText":"Dadirri: A Reflection (Miriam-Rose Ungunmerr-Baumann)","keyWords":"Dadirri · Vision Quest · Shamanism · Ho'oponopono · Drumming · Ubuntu · Ancestral"}];
+let studied = JSON.parse(localStorage.getItem('meditation_studied') || '[]');
+let activeFilter = 'all';
+
+function saveStudied() {
+  localStorage.setItem('meditation_studied', JSON.stringify(studied));
+  updateProgress();
+}
+
+function updateProgress() {
+  const n = studied.length;
+  const pct = Math.round((n/60)*100);
+  document.getElementById('studiedCount').textContent = n;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = n + ' of 60 meditations studied (' + pct + '%)';
+}
+
+function toggleStudied(id, e) {
+  e.stopPropagation();
+  if (studied.includes(id)) studied = studied.filter(x => x !== id);
+  else studied.push(id);
+  saveStudied();
+  renderGrid();
+}
+
+function setFilter(f, btn) {
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterCards();
+}
+
+function filterCards() {
+  const q = document.getElementById('searchBox').value.toLowerCase();
+  const cards = document.querySelectorAll('.card');
+  let visible = 0;
+  cards.forEach(card => {
+    const data = card.dataset;
+    const matchFilter = activeFilter === 'all' || 
+      (activeFilter === 'studied' && studied.includes(parseInt(data.id))) ||
+      data.era.toLowerCase().includes(activeFilter.toLowerCase());
+    const matchSearch = !q || 
+      data.name.toLowerCase().includes(q) ||
+      data.origin.toLowerCase().includes(q) ||
+      data.teacher.toLowerCase().includes(q) ||
+      data.keywords.toLowerCase().includes(q) ||
+      data.technique.toLowerCase().includes(q) ||
+      data.era.toLowerCase().includes(q);
+    const show = matchFilter && matchSearch;
+    card.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+  const noRes = document.getElementById('noResults');
+  if(noRes) noRes.style.display = visible === 0 ? '' : 'none';
+}
+
+function openModal(id) {
+  const m = MEDS.find(x => x.id === id);
+  if(!m) return;
+  const isStudied = studied.includes(id);
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-header">
+      <div class="modal-symbol">${m.symbol}</div>
+      <div>
+        <div style="font-size:0.75rem;color:#888;margin-bottom:4px;">#${m.id} · ${m.era}</div>
+        <div class="modal-name">${m.name}</div>
+        <div style="font-size:0.85rem;color:#aaa;margin-top:4px;">${m.origin} · ${m.year}</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="modal-section">
+      <div class="modal-section-title">👨‍🏫 Key Teachers / Founders</div>
+      <div class="modal-section-body">${m.teacher}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="modal-section">
+      <div class="modal-section-title">🔧 Core Technique</div>
+      <div class="modal-section-body">${m.technique}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="modal-section">
+      <div class="modal-section-title">🎯 Ultimate Goal</div>
+      <div class="modal-section-body">${m.goal}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="modal-section">
+      <div class="modal-section-title">📚 Key Text / Source</div>
+      <div class="modal-section-body" style="font-style:italic;">${m.keyText}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="modal-section">
+      <div class="modal-section-title">🔑 Keywords</div>
+      <div class="key-words">${m.keyWords.split(' · ').map(k=>`<span class="kw">${k}</span>`).join('')}</div>
+    </div>
+    <div class="divider"></div>
+    <div style="text-align:center;padding-top:8px;">
+      <button onclick="toggleStudied(${id},{stopPropagation:()=>{}})" style="background:${isStudied?'rgba(245,200,66,0.2)':'rgba(108,99,255,0.2)'};border:1px solid ${isStudied?'#f5c842':'#6c63ff'};color:${isStudied?'#f5c842':'#a0a0ff'};padding:10px 24px;border-radius:10px;font-size:0.9rem;cursor:pointer;font-weight:600;">
+        ${isStudied ? '✓ Mark as Not Studied' : '+ Mark as Studied'}
+      </button>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if(e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModalDirect(); });
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = MEDS.map(m => {
+    const isStudied = studied.includes(m.id);
+    const shortTech = m.technique.length > 160 ? m.technique.substring(0,157)+'...' : m.technique;
+    return `<div class="card${isStudied?' studied':''}" 
+      data-id="${m.id}" data-era="${m.era}" data-name="${m.name}" 
+      data-origin="${m.origin}" data-teacher="${m.teacher}" 
+      data-keywords="${m.keyWords}" data-technique="${m.technique}"
+      onclick="openModal(${m.id})">
+      <div class="card-header" style="border-left:4px solid ${m.eraColor}">
+        <div class="card-symbol">${m.symbol}</div>
+        <div class="card-title-group">
+          <div class="card-num">#${m.id}</div>
+          <div class="card-name">${m.name}</div>
+          <span class="card-era" style="background:${m.eraColor}22;color:${m.eraColor};border:1px solid ${m.eraColor}44;">${m.era}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="meta-row">
+          <div class="meta-chip"><span>📍</span>${m.origin}</div>
+          <div class="meta-chip"><span>📅</span>${m.year}</div>
+        </div>
+        <div class="meta-chip" style="margin-bottom:10px;display:inline-block;"><span>👤</span>${m.teacher.split(',')[0].split('(')[0].trim()}</div>
+        <div class="section-label">Core Technique</div>
+        <div class="section-text">${shortTech}</div>
+        <div class="key-words">${m.keyWords.split(' · ').slice(0,4).map(k=>`<span class="kw">${k}</span>`).join('')}</div>
+      </div>
+      <div class="card-footer">
+        <button class="study-btn" onclick="toggleStudied(${m.id},event)">${isStudied?'✓ Studied':'Mark Studied'}</button>
+        <div class="key-text-small">${m.keyText.split('(')[0].trim()}</div>
+      </div>
+    </div>`;
+  }).join('') + '<div id="noResults" class="no-results" style="display:none">No meditations found. Try a different search.</div>';
+  updateProgress();
+  filterCards();
+}
+
+renderGrid();
+</script>
+
+</body></html>
